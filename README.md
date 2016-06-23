@@ -50,6 +50,13 @@ We would love your help.
 
 > BING_GEOCODE_ID: "TBD" # Used in config/initializers/geocoder.rb file.
 
+> SITEURL: 'hillarybnb.com' or whatever your site's URL is
+
+> FB_CAPTION: 'Host a volunteer!'
+
+> CAUSE_NAME: 'Hillary Clinton'
+
+
 * Only for:
 
 > development:

@@ -31,10 +31,10 @@ App.init = function() {
   $('.facebook-share').click(function() {
     FB.ui({
       method: 'share',
-      href: 'http://www.berniebnb.com',
-      caption: 'feel the bern',
+      href: '<%= ENV['SITEURL'] %>',
+      caption: '<%= ENV['FB_CAPTION'] %>',
       name: 'I just signed up!',
-      description: 'Get involved with the Bernie Sanders campaign by offering ' +
+      description: 'Get involved with the <%= ENV["CAUSE_NAME"] %> campaign by offering ' +
                    'volunteers out on the campaign trail a place to stay. Sign up today!'
     }); // second parameter is callback function
   });

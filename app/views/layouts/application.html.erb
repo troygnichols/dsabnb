@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= csrf_meta_tags %>
 
-  <% description = "Home sharing for Bernie Sanders supporters. Helping connect volunteers out on the campaign trail with a place to stay. Sign up today as either host or traveler!" %>
+  <% description = "Home sharing for " + cause_name +  " supporters. Helping connect volunteers out on the campaign trail with a place to stay. Sign up today as either host or traveler!" %>
 
-  <meta property="og:title" content="BernieBNB.com" />
+  <meta property="og:title" content="<%= site_hostname(request) %>" />
   <meta property="og:description" content="<%= description %>" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://www.berniebnb.com" />
-  <meta property="og:image" content="<%= image_url 'bernie-bnb-logo.png' %>" />
+  <meta property="og:url" content="http://<%= site_hostname(request) %>" />
+  <meta property="og:image" content="<%= image_url site_image_name %>" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:description" content="<%= description %>" />
 
-  <title>BernieBNB</title>
+  <title><%= site_name %></title>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -51,7 +51,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <span class="copyright">&copy; BernieBNB <%= Time.now.year %></span>
+          <span class="copyright">&copy; <%= site_name %> <%= Time.now.year %></span>
         </div>
         <div class="col-md-4">
           <%= link_to "Privacy Policy", privacy_policy_path %>
