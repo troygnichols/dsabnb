@@ -70,12 +70,11 @@ We would love your help.
 
   4. To set up development environment, do the following:
     * Fork the repo at https://github.com/SandersForPresident/BernieBNB
-    * Cloned it locally.
-    * Setup environment to use ruby 2.3.1
-    * Do above steps 1-3.
-    * Run "bundle"
-    * Run "rake db:create".
-    * Run "rake db:migrate".
-    * Run "rake db:setup".
+    * Clone it locally.
+    * `docker-compose build`
+    * `docker-compose up -d`
+    * `open http://$( docker-machine ip ):3000/`
+
+    STUFF DAVE HASNT TRIED TO DO YET
     * Run "rake" to run the tests.
     * Run "git remote add upstream https://github.com/SandersForPresident/BernieBNB.git" so you can keep in sync with original project by running "git pull upstream master".
