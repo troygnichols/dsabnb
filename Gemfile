@@ -76,7 +76,8 @@ group :production, :staging do
 end
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', :platforms => :ruby
+
 #
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
