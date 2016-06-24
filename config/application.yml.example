@@ -1,0 +1,8 @@
+FACEBOOK_KEY: '12345'
+FACEBOOK_SECRET: 'abcde'
+GOOGLE_CLIENT_ID: "TBD"
+GOOGLE_CLIENT_SECRET: "TBD"
+BING_GEOCODE_ID: "TBD"
+SITEURL: 'hillarybnb.com'
+FB_CAPTION: 'Host a volunteer!'
+CAUSE_NAME: 'Hillary Clinton'
