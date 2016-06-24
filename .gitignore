@@ -24,3 +24,6 @@ coverage
 
 # Ignore emacs poop
 *~
+
+# Ignore DJs journal
+journal.txt
