@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: user.email,
-      subject: "#{t('general.bernie').capitalize} BNB - Confirm Your Email",
+      subject: "Confirm Your Email",
       html: template("user_mailer/registration_confirmation.html.erb")
     )
   end
@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @user.email,
-      subject: "#{t('general.bernie').capitalize} BNB - Thanks for signing up!",
+      subject: "Thanks for signing up!",
       html: template("user_mailer/welcome_email.html.erb")
     )
   end
@@ -33,8 +33,8 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @visitor.email,
-      'h:Reply-To' => 'DO-NOT-REPLY@berniebnb.com',
-      subject: 'BernieBNB - New hosts for your visit!',
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['SITEURL']}",
+      subject: 'New hosts for your visit!',
       html: template("user_mailer/new_hosts_digest.html.erb")
     )
   end
@@ -48,8 +48,8 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @host.email,
-      'h:Reply-To' => 'DO-NOT-REPLY@berniebnb.com',
-      subject: "BernieBNB - You've been contacted!",
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['SITEURL']}",
+      subject: "You've been contacted!",
       html: template("user_mailer/new_contacts_digest.html.erb")
     )
   end
@@ -65,7 +65,7 @@ class UserMailer < ApplicationMailer
   end
 
   def default_sender_address
-    "BernieBNB <notifications@#{ENV['BASE_DOMAIN']}>"
+    ENV['DEFAULT_SENDER_ADDRESS']
   end
 
   def template(path)
