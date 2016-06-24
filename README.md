@@ -30,7 +30,7 @@ We would love your help.
       * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
   3. Create Bing Maps key (BING_GEOCODE_ID) at
      https://msdn.microsoft.com/en-us/library/ff428642.aspx
-  4. Based on figaro gem, create a config/application.yml file and set values.
+  4. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
 
 > USERNAME: "TBD" # Used in config/database.yml file.
 
@@ -81,7 +81,7 @@ We would love your help.
     * `docker-compose build`
     * `docker-compose up -d`
     * `open http://$( docker-machine ip ):3000/`
+    * Run "git remote add upstream https://github.com/dsjoerg/BernieBNB.git" so you can keep in sync with original project by running "git pull upstream master".
 
     STUFF DAVE HASNT TRIED TO DO YET
     * Run "rake" to run the tests.
-    * Run "git remote add upstream https://github.com/SandersForPresident/BernieBNB.git" so you can keep in sync with original project by running "git pull upstream master".
