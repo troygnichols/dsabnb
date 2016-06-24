@@ -13,7 +13,7 @@ of town and to help supporters on the road find lodging.
 * Bower for front end asset management
 
 ## Contributing
-We have a channel on slack. Please e-mail buddhistsforbernie@gmail.com for an invite.
+Please e-mail dsjoerg@gmail.com.
 We would love your help.
 
 [![](http://img.shields.io/gittip/berniebnbinfo.svg)](https://www.gittip.com/berniebnbinfo/)
