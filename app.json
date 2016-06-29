@@ -1,0 +1,8 @@
+{
+  "name": "HillaryBNB",
+  "description": "HillaryBNB",
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}

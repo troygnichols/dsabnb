@@ -13,7 +13,18 @@ of town and to help supporters on the road find lodging.
 Please e-mail dsjoerg@gmail.com.
 We would love your help.
 
-### Steps
+## Setting up development
+* install [Docker Toolbox](https://www.docker.com/toolbox)
+* fork HillaryBNB on github
+* `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
+* `docker-compose build`
+* `docker-compose up -d web`
+* `open "http://$(docker-machine ip default):8080"`
+* `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
+
+## Stuff Dave doesnt have working yet
+* Run "rake" to run the tests.
+* setting up facebook/google/bing connections in development
   1. Set up Facebook Developer account at https://developers.facebook.com
      then get your FACEBOOK_KEY and FACEBOOK_SECRET.
     * Here is a good How-To article:
@@ -27,56 +38,25 @@ We would love your help.
      https://msdn.microsoft.com/en-us/library/ff428642.aspx
   4. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
 
+* Why are these in the README:
 > USERNAME: "TBD" # Used in config/database.yml file.
-
 > PASSWORD: "TBD" # Used in config/database.yml file.
-
 > IP: "http://localhost:3000/"
-
 > MAILER_URL: "localhost:3000/"
-
 > FACEBOOK_KEY: "TBD" # Used in config/initializers/omniauth.rb file.
-
 > FACEBOOK_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
-
 > GOOGLE_CLIENT_ID: "TBD" # Used in config/initializers/omniauth.rb file.
-
 > GOOGLE_CLIENT_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
-
 > BING_GEOCODE_ID: "TBD" # Used in config/initializers/geocoder.rb file.
-
 > SITEURL: 'hillarybnb.com' or whatever your site's URL is
-
 > FB_CAPTION: 'Host a volunteer!'
-
 > CAUSE_NAME: 'Hillary Clinton'
 
-
-* Only for:
-
-> development:
-
+* Only for development:
 > MAILGUN_API_KEY:       "TBD"
-
 > MAILGUN_DOMAIN:        "TBD
-
 > MAILGUN_PUBLIC_KEY:    "TBD"
-
 > MAILGUN_SMTP_LOGIN:    "TBD"
-
 > MAILGUN_SMTP_PASSWORD: "TBD"
-
 > MAILGUN_SMTP_PORT:     "587"
-
 > MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
-
-  4. To set up development environment, do the following:
-    * Fork the repo at https://github.com/DevProgress/HillaryBNB
-    * Clone it locally.
-    * `docker-compose build`
-    * `docker-compose up -d`
-    * `open http://$( docker-machine ip ):3000/`
-    * Run "git remote add upstream https://github.com/DevProgress/HillaryBNB" so you can keep in sync with original project by running "git pull upstream master".
-
-    STUFF DAVE HASNT TRIED TO DO YET
-    * Run "rake" to run the tests.

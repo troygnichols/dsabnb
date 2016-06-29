@@ -1,14 +1,26 @@
-version: '2'
-services:
-  db:
-    image: postgres
-  web:
-    build: .
-    restart: always
-    command: bash -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rake db:migrate && bundle exec rake db:setup && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+web:
+  build: .
+  command: 'bash -c ''bundle exec puma -C config/puma.rb'''
+  working_dir: /app/user
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  ports:
+    - '8080:8080'
+  links:
+    - herokuPostgresql
+shell:
+  build: .
+  command: bash
+  working_dir: /app/user
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  ports:
+    - '8080:8080'
+  links:
+    - herokuPostgresql
+  volumes:
+    - '.:/app/user'
+herokuPostgresql:
+  image: postgres
