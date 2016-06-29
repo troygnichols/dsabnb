@@ -21,9 +21,7 @@ We would love your help.
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
-
-## Running tests in development
-* `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && bin/rake'`
+* Run tests: `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && bin/rake'`  Currently 2 fail, there's an open issue to fix this.
 
 ## Stuff Dave doesnt have working yet
 * setting up facebook/google/bing connections in development
@@ -41,24 +39,44 @@ We would love your help.
   4. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
 
 * Why are these in the README:
+
 > USERNAME: "TBD" # Used in config/database.yml file.
+
 > PASSWORD: "TBD" # Used in config/database.yml file.
+
 > IP: "http://localhost:3000/"
+
 > MAILER_URL: "localhost:3000/"
+
 > FACEBOOK_KEY: "TBD" # Used in config/initializers/omniauth.rb file.
+
 > FACEBOOK_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
+
 > GOOGLE_CLIENT_ID: "TBD" # Used in config/initializers/omniauth.rb file.
+
 > GOOGLE_CLIENT_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
+
 > BING_GEOCODE_ID: "TBD" # Used in config/initializers/geocoder.rb file.
+
 > SITEURL: 'hillarybnb.com' or whatever your site's URL is
+
 > FB_CAPTION: 'Host a volunteer!'
+
 > CAUSE_NAME: 'Hillary Clinton'
 
+
 * Only for development:
+
 > MAILGUN_API_KEY:       "TBD"
+
 > MAILGUN_DOMAIN:        "TBD
+
 > MAILGUN_PUBLIC_KEY:    "TBD"
+
 > MAILGUN_SMTP_LOGIN:    "TBD"
+
 > MAILGUN_SMTP_PASSWORD: "TBD"
+
 > MAILGUN_SMTP_PORT:     "587"
+
 > MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
