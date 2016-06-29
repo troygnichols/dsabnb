@@ -33,7 +33,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @visitor.email,
-      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['SITEURL']}",
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['BASE_DOMAIN']}",
       subject: 'New hosts for your visit!',
       html: template("user_mailer/new_hosts_digest.html.erb")
     )
@@ -48,7 +48,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @host.email,
-      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['SITEURL']}",
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['BASE_DOMAIN']}",
       subject: "You've been contacted!",
       html: template("user_mailer/new_contacts_digest.html.erb")
     )

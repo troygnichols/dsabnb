@@ -3,9 +3,9 @@ FACEBOOK_SECRET: 'abcde'
 GOOGLE_CLIENT_ID: "TBD"
 GOOGLE_CLIENT_SECRET: "TBD"
 BING_GEOCODE_ID: "TBD"
-SITEURL: 'hillarybnb.com'
+SITEURL: 'www.hillarybnb.com'
+MAILER_URL: 'www.hillarybnb.com'
 BASE_DOMAIN: 'hillarybnb.com'
-MAILER_URL: 'hillarybnb.com'
 FB_CAPTION: 'Host a volunteer!'
 CAUSE_NAME: 'Hillary Clinton'
 MAILGUN_API_KEY:       "TBD"
