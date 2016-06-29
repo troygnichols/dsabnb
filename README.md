@@ -1,6 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/SandersForPresident/BernieBNB.png?label=ready&title=Ready)](https://waffle.io/SandersForPresident/BernieBNB)
-
-![Bernie BNB](app/assets/images/bernie-bnb-logo.png)
 
 ## Goal
 We want to build an app to allow supporters to share their homes with others from out
@@ -15,8 +12,6 @@ of town and to help supporters on the road find lodging.
 ## Contributing
 Please e-mail dsjoerg@gmail.com.
 We would love your help.
-
-[![](http://img.shields.io/gittip/berniebnbinfo.svg)](https://www.gittip.com/berniebnbinfo/)
 
 ### Steps
   1. Set up Facebook Developer account at https://developers.facebook.com
@@ -76,12 +71,12 @@ We would love your help.
 > MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
 
   4. To set up development environment, do the following:
-    * Fork the repo at https://github.com/SandersForPresident/BernieBNB
+    * Fork the repo at https://github.com/DevProgress/HillaryBNB
     * Clone it locally.
     * `docker-compose build`
     * `docker-compose up -d`
     * `open http://$( docker-machine ip ):3000/`
-    * Run "git remote add upstream https://github.com/dsjoerg/BernieBNB.git" so you can keep in sync with original project by running "git pull upstream master".
+    * Run "git remote add upstream https://github.com/DevProgress/HillaryBNB" so you can keep in sync with original project by running "git pull upstream master".
 
     STUFF DAVE HASNT TRIED TO DO YET
     * Run "rake" to run the tests.
