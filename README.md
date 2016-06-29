@@ -21,7 +21,7 @@ We would love your help.
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
-* Run tests: `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && bin/rake'`  Currently 2 fail, there's an open issue to fix this.
+* Run tests: `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && RAILS_ENV=test bin/rake'`
 
 ## Deploying to Heroku
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
@@ -30,20 +30,19 @@ We would love your help.
 * `heroku container:release`
 * `heroku open`
 
-## Stuff Dave doesnt have working yet
-* setting up facebook/google/bing connections in development
-  1. Set up Facebook Developer account at https://developers.facebook.com
+## Setting up facebook/google/bing connections
+  #. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
+  #. Set up Facebook Developer account at https://developers.facebook.com
      then get your FACEBOOK_KEY and FACEBOOK_SECRET.
     * Here is a good How-To article:
       * https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/
-  2. Set up Google Developer account at https://developers.google.com/
+  #. Set up Google Developer account at https://developers.google.com/
      and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
     * Here are two good How-To articles:
       * https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
       * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
-  3. Create Bing Maps key (BING_GEOCODE_ID) at
+  #. Create Bing Maps key (BING_GEOCODE_ID) at
      https://msdn.microsoft.com/en-us/library/ff428642.aspx
-  4. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
 
 
 ## Why are these in the README:

@@ -30,4 +30,4 @@ deploy:
   app: bbnb-staging
   skip_cleanup: true
   on:
-    repo: SandersForPresident/BernieBNB
+    repo: DevProgress/HillaryBNB

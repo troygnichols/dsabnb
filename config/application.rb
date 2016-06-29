@@ -15,7 +15,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :staging, :production.
 Bundler.require(*Rails.groups)
 
-module BernieBNB
+module HillaryBNB
   class Application < Rails::Application
     config.generators do |g|
       g.test_framework :rspec,

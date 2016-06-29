@@ -26,7 +26,7 @@ describe 'send_new_contacts_digest' do
   end
 
   before do
-    BernieBNB::Application.load_tasks
+    HillaryBNB::Application.load_tasks
 
     allow(Hosting)
       .to receive(:includes)

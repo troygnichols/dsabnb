@@ -1,6 +1,6 @@
 {
-  "name": "BernieBNB",
-  "homepage": "http://berniebnb.com"
+  "name": "HillaryBNB",
+  "homepage": "http://www.hillarybnb.com"
   "license": "MIT",
   "version": "0.0.0",
   "main": "application.js",
@@ -12,11 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SandersForPresident/BernieBNB.git"
+    "url": "https://github.com/DevProgress/HillaryBNB.git"
   },
-  "author": "Tess Baklor <cockroachbill@gmail.com>",
   "bugs": {
-    "url": "https://github.com/SandersForPresident/BernieBNB/issues"
+    "url": "https://github.com/DevProgress/HillaryBNB/issues"
   },
   "dependencies": {
     "bower": "^1.7.7"
