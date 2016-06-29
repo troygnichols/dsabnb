@@ -22,8 +22,10 @@ We would love your help.
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
 
+## Running tests in development
+* `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && bin/rake'`
+
 ## Stuff Dave doesnt have working yet
-* Run "rake" to run the tests.
 * setting up facebook/google/bing connections in development
   1. Set up Facebook Developer account at https://developers.facebook.com
      then get your FACEBOOK_KEY and FACEBOOK_SECRET.
