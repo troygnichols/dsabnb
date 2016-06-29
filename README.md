@@ -23,6 +23,13 @@ We would love your help.
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
 * Run tests: `docker-compose run shell bash -c 'bin/rake db:migrate RAILS_ENV=test && bin/rake'`  Currently 2 fail, there's an open issue to fix this.
 
+## Deploying to Heroku
+* install [Heroku Toolbelt](https://toolbelt.heroku.com/)
+* `heroku plugins:install heroku-container-tools`
+* NOT SURE ABOUT THIS `heroku apps:join --app hillarybnb`
+* `heroku container:release`
+* `heroku open`
+
 ## Stuff Dave doesnt have working yet
 * setting up facebook/google/bing connections in development
   1. Set up Facebook Developer account at https://developers.facebook.com
@@ -38,7 +45,8 @@ We would love your help.
      https://msdn.microsoft.com/en-us/library/ff428642.aspx
   4. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
 
-* Why are these in the README:
+
+## Why are these in the README:
 
 > USERNAME: "TBD" # Used in config/database.yml file.
 
@@ -63,7 +71,6 @@ We would love your help.
 > FB_CAPTION: 'Host a volunteer!'
 
 > CAUSE_NAME: 'Hillary Clinton'
-
 
 * Only for development:
 
