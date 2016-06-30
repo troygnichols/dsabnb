@@ -71,7 +71,7 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'bugsnag'
+  gem 'airbrake'
   gem 'rails_12factor'
 end
 

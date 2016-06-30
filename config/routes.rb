@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   # FEEDBACK
   get  'feedback', to: 'feedbacks#new', as: 'contact'
   post 'feedback', to: 'feedbacks#create'
+  get "five_hundred" => "home#five_hundred"
 end
