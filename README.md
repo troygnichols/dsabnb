@@ -15,13 +15,13 @@ We would love your help.
 
 ## Setting up development
 * install [Docker Toolbox](https://www.docker.com/toolbox)
-* fork HillaryBNB on github
-* `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
+* fork HillaryBNB on github: `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
+* `cp config/application.yml.example config/application.yml`
 * `docker-compose build`
 * `export RAILS_ENV=development; docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
-* Run tests: `RAILS_ENV=test docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
+* Run tests: `export RAILS_ENV=test; docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
 ## Deploying to Heroku
@@ -32,18 +32,18 @@ We would love your help.
 * `heroku open`
 
 ## Setting up facebook/google/bing connections
-  #. `cp config/application.yml.example config/application.yml` and set values in config/application.yml.
-  #. Set up Facebook Developer account at https://developers.facebook.com
-     then get your FACEBOOK_KEY and FACEBOOK_SECRET.
-    * Here is a good How-To article:
-      * https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/
-  #. Set up Google Developer account at https://developers.google.com/
-     and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
-    * Here are two good How-To articles:
-      * https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
-      * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
-  #. Create Bing Maps key (BING_GEOCODE_ID) at
-     https://msdn.microsoft.com/en-us/library/ff428642.aspx
+Configure values for the variables below in config/application.yml:
+* Set up Facebook Developer account at https://developers.facebook.com
+  then get your FACEBOOK_KEY and FACEBOOK_SECRET.
+  * Here is a good How-To article:
+    * https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/
+* Set up Google Developer account at https://developers.google.com/
+  and get your GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.
+  * Here are two good How-To articles:
+    * https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
+    * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
+* Create Bing Maps key (BING_GEOCODE_ID) at
+  https://msdn.microsoft.com/en-us/library/ff428642.aspx
 
 
 ## Why are these in the README:
