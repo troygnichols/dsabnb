@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def email_contact
-    "dsjoerg@gmail.com"
+    "admin@hillarybnb.com"
   end
 
   def privacy_policy_link
