@@ -31,7 +31,7 @@ We would love your help.
 * `heroku container:release`
 * `heroku open`
 
-## Setting up facebook/google/bing connections
+## Setting up Facebook/Google/Bing connections
 Configure values for the variables below in config/application.yml:
 * Set up Facebook Developer account at https://developers.facebook.com
   then get your FACEBOOK_KEY and FACEBOOK_SECRET.
@@ -45,6 +45,15 @@ Configure values for the variables below in config/application.yml:
 * Create Bing Maps key (BING_GEOCODE_ID) at
   https://msdn.microsoft.com/en-us/library/ff428642.aspx
 
+## Setting up Mailgun
+
+A mailgun account is required to send the confirmation email when signing up.
+
+* Go to [Mailgun](https://mailgun.com) and sign up for an account
+* You will start with a sandbox account with up to 300 emails per day, or you can create a real one with 10k free emails per month.
+* Go to your sandbox domain page to fill out all the `MAILGUN_*` variables in `config/application.yml`
+* Go to the main page (https://mailgun.com/app/dashboard) and search for `API Keys` to find your public key.
+* Restart `docker-compose restart web`
 
 ## Why are these in the README:
 
