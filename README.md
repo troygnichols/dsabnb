@@ -29,7 +29,14 @@ We would love your help.
 * `heroku plugins:install heroku-container-tools`
 * DJ NOT SURE IF THIS IS THE EXACT COMMAND YOU NEED `heroku apps:join --app hillarybnb`
 * `heroku container:release`
-* `heroku open`
+* `heroku open` 
+
+## Setup local hostname
+Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname that points to your docker machine
+### Mac
+* Run `docker-machine ip default` to find your docker machine IP
+* Copy that into `/etc/hosts` and give it whatever hostname you want (ex. hbnb.com)
+* Visit `hbnb.com:8080` to verify it works
 
 ## Setting up facebook/google/bing connections
 Configure values for the variables below in config/application.yml:
