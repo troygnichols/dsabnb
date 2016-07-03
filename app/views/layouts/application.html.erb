@@ -33,6 +33,8 @@ HHHHHH       →→HHHH
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <meta name="google-site-verification" content="Rf4-_xxiyhJpGWzPBcEhqvFbJi22lrm_w2Khg8XekZI" />
+
+  <%= render "layouts/google_analytics" %>
 </head>
 
 <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
