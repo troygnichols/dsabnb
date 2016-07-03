@@ -10,11 +10,14 @@ MAILER_URL: 'www.hillarybnb.com'
 BASE_DOMAIN: 'hillarybnb.com'
 FB_CAPTION: 'Host a volunteer!'
 CAUSE_NAME: 'Hillary Clinton'
-MAILGUN_API_KEY:       "TBD"
-MAILGUN_DOMAIN:        "TBD"
-MAILGUN_PUBLIC_KEY:    "TBD"
-MAILGUN_SMTP_LOGIN:    "TBD"
-MAILGUN_SMTP_PASSWORD: "TBD"
-MAILGUN_SMTP_PORT:     "587"
-MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
 DEFAULT_SENDER_ADDRESS: "someone@hillarybnb.com"
+
+development:
+  MAILGUN_API_KEY:       "TBD"
+  MAILGUN_DOMAIN:        "TBD"
+  MAILGUN_PUBLIC_KEY:    "TBD"
+  MAILGUN_SMTP_LOGIN:    "TBD"
+  MAILGUN_SMTP_PASSWORD: "TBD"
+  MAILGUN_SMTP_PORT:     "587"
+  MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
+
