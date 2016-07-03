@@ -10,13 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require bootstrap
  *= require_self
  *= require jquery-ui/datepicker
  *= require jquery-ui/accordion
  */
 
+@import "config/**/*";
+@import "lib/**/*";
+@import "./*";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic);
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -25,6 +27,10 @@
 
 html, body {
   font-size: 19px;
+}
+
+body {
+  padding: 15px;
 }
 
 ul {
@@ -36,10 +42,14 @@ small, .help-block {
   font-size: 16px;
 }
 
+.page {
+  max-width: 680px;
+}
+
 .header {
   padding: 5px 0;
   text-align: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $light-gray;
   margin-bottom: 5px;
   white-space: nowrap;
   overflow-x: hidden;
@@ -56,14 +66,14 @@ small, .help-block {
 .btn-info.active:focus,
 .btn-info:active.focus,
 .btn-info.active.focus {
-  background-color: #EFF3F7;
-  color: #147fd7;
+  background-color: $light-gray;
+  color: $darker-gray;
   border: none;
 }
 
 span.big-number {
   padding: 5px;
-  background-color: #147FDF;
+  background-color: $darker-gray;
   color: white;
   padding: 10px 16px;
   border-radius: 50%;
@@ -96,18 +106,18 @@ ul.profile-results {
   margin-top: 20px;
   > li {
     padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $light-gray;
     > p { margin: 0; }
     div.contact-form {
       margin-top: 10px;
       padding: 10px 0;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid $light-gray;
       ul {
         margin: 9px 0;
       }
     }
   }
-  > li:first-child { border-top: 1px solid #ccc; }
+  > li:first-child { border-top: 1px solid $light-gray; }
 }
 
 .bump {
@@ -120,7 +130,7 @@ ul.profile-results {
 
 hr {
   border: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $light-gray;
 }
 
 .right {
@@ -143,15 +153,11 @@ hr {
 
 
 footer {
-  background-image: linear-gradient(0deg, #FFFFFF, #fefefe);
   padding: 25px 0;
   text-align: center;
-  border-top: 3px solid rgba(0, 0, 0, 0.11);
+  font-size: 16px;
+  border-top: 1px solid $light-gray;
   margin-top: 50px;
-
-  .container{
-    width: 75%;
-  }
 }
 
 
