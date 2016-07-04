@@ -17,19 +17,19 @@ We would love your help.
 * install [Docker Toolbox](https://www.docker.com/toolbox)
 * fork HillaryBNB on github: `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
 * `cp config/application.yml.example config/application.yml`
+* `export RAILS_ENV=development;`
 * `docker-compose build`
-* `export RAILS_ENV=development; docker-compose up -d web`
+* `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
-* Run tests: `export RAILS_ENV=test; docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
+* Run tests: `RAILS_ENV=test docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
 ## Deploying to Heroku
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 * `heroku plugins:install heroku-container-tools`
-* DJ NOT SURE IF THIS IS THE EXACT COMMAND YOU NEED `heroku apps:join --app hillarybnb`
-* `heroku container:release`
-* `heroku open` 
+* `heroku container:release --app hillarybnb`
+* `heroku open --app hillarybnb`
 
 ## Setup local hostname
 Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname that points to your docker machine
