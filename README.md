@@ -49,6 +49,12 @@ Configure values for the variables below in config/application.yml:
   * Here are two good How-To articles:
     * https://richonrails.com/articles/google-authentication-in-ruby-on-rails/
     * http://wlowry88.github.io/blog/2014/08/02/google-contacts-api-with-oauth-in-rails/
+  * Some instructions
+    * In the Google console:
+      * Create credentials, which gets you a Client ID and Secret
+      * Enable the Google+ API or you will get an invalid credentials error
+      * Set your redirect URI to the following http://hbnb.com:8080/auth/google_oauth2/callback
+    * Rename your VM to hbnb.com in /etc/hosts (or windows equivalent) to ensure your browser can resolve the callback URI:  `echo '$(docker-machine ip) hbnb.com' >> /etc/hosts`
 * Create Bing Maps key (BING_GEOCODE_ID) at
   https://msdn.microsoft.com/en-us/library/ff428642.aspx
 
