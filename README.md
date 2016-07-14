@@ -17,7 +17,7 @@ We would love your help.
 * install [Docker Toolbox](https://www.docker.com/toolbox)
 * fork HillaryBNB on github: `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
 * `cp config/application.yml.example config/application.yml`
-* `export RAILS_ENV=development;`
+* `export RAILS_ENV=development`
 * `docker-compose build`
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
