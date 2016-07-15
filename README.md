@@ -28,7 +28,9 @@ We would love your help.
 ## Deploying to Heroku
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 * `heroku plugins:install heroku-container-tools`
+* get application.yml from DJ and put it in config/
 * `heroku container:release --app hillarybnb`
+* `heroku run rake db:migrate`
 * `heroku open --app hillarybnb`
 
 ## Setup local hostname
