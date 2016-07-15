@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def site_image_name
-    "mark-h.svg"
+    "Highlight_h_logo_large.png"
   end
 
   def email_contact
