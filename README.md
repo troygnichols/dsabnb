@@ -33,6 +33,14 @@ We would love your help.
 * `heroku run rake db:migrate`
 * `heroku open --app hillarybnb`
 
+## Sending daily emails
+You should set up the following to run periodically (daily was what BernieBNB did):
+* `heroku run rake clear_past_dated_visits`
+* `heroku run rake send_new_contacts_digest`
+* `heroku run rake send_new_hosts_digest`
+*WARNING* do not run `heroku run rake`, it will happily delete the entire database!   <---- TODO fix this so it cant happen in production
+
+
 ## Setup local hostname
 Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname that points to your docker machine
 ### Mac
