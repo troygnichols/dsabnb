@@ -25,6 +25,9 @@ We would love your help.
 * Run tests: `RAILS_ENV=test docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
+## Updating gem versions
+* `docker-compose run shell bundle update [gemname]`
+
 ## Connecting to dev DB
 * `docker-compose exec herokuPostgresql psql -U postgres`
 
