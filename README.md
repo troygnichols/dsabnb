@@ -80,8 +80,8 @@ A mailgun account is required to send the confirmation email when signing up.
 
 ## When does HillaryBNB send emails?
 
-As of 20161010, HillaryBNB.com sends emails nightly.
+As of 20161010, HillaryBNB.com sends emails nightly.  Every night at 3:30/4am Eastern time we do the following:
 
-For each Hosting Offer registered in the system, every night we gather the contact information of visitors who clicked the "SEND MY CONTACT INFO" button within the past 24 hours and email them to the the host. (Note that this means a host may receive multiple emails from us if they have multiple Hosting Offers).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_contacts_digest.rake)
+For each Hosting Offer registered in the system, if there are any visitors who clicked the "SEND MY CONTACT INFO" button within the past 24 hours, we gather their contact information and email them to the the host. (Note that this means a host may receive multiple emails from us if they have multiple Hosting Offers).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_contacts_digest.rake)
 
-For each Visit registered in the system, if any new Hosting Offers were created within the past 24 hours that are within 20 miles of the visit zip code, we email them to the visitor in a single email. (Note that this means a visitor may receive multiple emails from us if they have multiple pending Visits).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_hosts_digest.rake)
+For each Visit registered in the system, if there are any new Hosting Offers created within the past 24 hours that are within 20 miles of the Visit's zip code, we email them to the visitor. (Note that this means a visitor may receive multiple emails from us if they have multiple pending Visits).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_hosts_digest.rake)
