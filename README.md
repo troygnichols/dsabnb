@@ -29,7 +29,7 @@ We would love your help.
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 * `heroku plugins:install heroku-container-tools`
 * get application.yml from DJ and put it in config/
-* `heroku container:release --app hillarybnb`
+* `heroku container:release --app hillarybnb`   NOTE that this deploys whatever you have locally in your dev environment, not what is committed to git or pushed to github
 * `heroku run rake db:migrate`
 * `heroku open --app hillarybnb`
 
@@ -78,44 +78,10 @@ A mailgun account is required to send the confirmation email when signing up.
 * Go to the main page (https://mailgun.com/app/dashboard) and search for `API Keys` to find your public key.
 * Restart `docker-compose restart web`
 
-## Why are these in the README:
+## When does HillaryBNB send emails?
 
-> USERNAME: "TBD" # Used in config/database.yml file.
+As of 20161010, HillaryBNB.com sends emails nightly.
 
-> PASSWORD: "TBD" # Used in config/database.yml file.
+For each Hosting Offer registered in the system, every night we gather the contact information of visitors who clicked the "SEND MY CONTACT INFO" button within the past 24 hours and email them to the the host. (Note that this means a host may receive multiple emails from us if they have multiple Hosting Offers).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_contacts_digest.rake)
 
-> IP: "http://localhost:3000/"
-
-> MAILER_URL: "localhost:3000/"
-
-> FACEBOOK_KEY: "TBD" # Used in config/initializers/omniauth.rb file.
-
-> FACEBOOK_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
-
-> GOOGLE_CLIENT_ID: "TBD" # Used in config/initializers/omniauth.rb file.
-
-> GOOGLE_CLIENT_SECRET: "TBD" # Used in config/initializers/omniauth.rb file.
-
-> BING_GEOCODE_ID: "TBD" # Used in config/initializers/geocoder.rb file.
-
-> SITEURL: 'hillarybnb.com' or whatever your site's URL is
-
-> FB_CAPTION: 'Host a volunteer!'
-
-> CAUSE_NAME: 'Hillary Clinton'
-
-* Only for development:
-
-> MAILGUN_API_KEY:       "TBD"
-
-> MAILGUN_DOMAIN:        "TBD
-
-> MAILGUN_PUBLIC_KEY:    "TBD"
-
-> MAILGUN_SMTP_LOGIN:    "TBD"
-
-> MAILGUN_SMTP_PASSWORD: "TBD"
-
-> MAILGUN_SMTP_PORT:     "587"
-
-> MAILGUN_SMTP_SERVER:   "smtp.mailgun.org"
+For each Visit registered in the system, if any new Hosting Offers were created within the past 24 hours that are within 20 miles of the visit zip code, we email them to the visitor in a single email. (Note that this means a visitor may receive multiple emails from us if they have multiple pending Visits).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_hosts_digest.rake)
