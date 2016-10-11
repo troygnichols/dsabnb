@@ -1,8 +1,8 @@
 App.Hostings = {};
 
 App.Hostings.init = function() {
-  this.sDate = $('#hostings_start_date');
-  this.eDate = $('#hostings_end_date');
+  this.sDate = $('#hosting_start_date');
+  this.eDate = $('#hosting_end_date');
 
   this.initDatepicker();
   this.updateText();

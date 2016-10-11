@@ -24,11 +24,11 @@
 window.App || (window.App = {});
 
 App.init = function() {
-  if($('#visits')) {
+  if($('#visits').length) {
     App.Visits.init();
   }
 
-  if($('#hostings')) {
+  if($('#hostings').length) {
     App.Hostings.init();
   }
 
