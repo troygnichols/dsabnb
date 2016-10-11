@@ -8,6 +8,16 @@
       %span.hosting Your zip code.
 
     .form-group
+      = f.label :accomodation_type, "What kind of accomodation are you offering?"
+      .multiline-radio
+        = f.label :accomodation_type_home, :display => 'inline-block' do 
+          = f.radio_button :accomodation_type, 'home', :checked => true
+          %span.hosting Room or bed in my home
+        = f.label :accomodation_type_home, :display => 'inline-block' do 
+          = f.radio_button :accomodation_type, 'hotel'
+          %span.hosting Hotel room or other accommodations
+
+    .form-group
       = f.label :max_guests, "How many can you host?"
       = f.select :max_guests,
         options_for_select((1..10).zip(1..10), @hosting.max_guests || nil),

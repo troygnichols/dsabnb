@@ -45,7 +45,7 @@ class HostingsController < ApplicationController
   def hosting_params
     params
       .require(:hosting)
-      .permit(:zipcode, :max_guests, :comment)
+      .permit(:zipcode, :max_guests, :comment, :accomodation_type)
   end
 
   def ensure_current_user_is_host

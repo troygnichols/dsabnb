@@ -1,7 +1,10 @@
 class Hosting < ActiveRecord::Base
+  enum accomodation_type: [ :home, :hotel ]
+
   validates :max_guests, presence: true
   validates :zipcode, zipcode: { country_code: :es }
   validates :comment, length: { maximum: 140 }
+  validates :accomodation_type, presence: true
 
   acts_as_paranoid
 

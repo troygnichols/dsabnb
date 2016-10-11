@@ -32,7 +32,7 @@ RSpec.describe "User creates Host", type: :feature do
   context "creating a new hosting" do
     it 'redirects the user to their homepage with link to the hosting record' do
       create_host
-      expect(page).to have_content("Brooklyn, NY 10 guests")
+      expect(page).to have_content("Brooklyn, NY private home, 10 guests")
     end
   end
 
@@ -53,19 +53,19 @@ RSpec.describe "User creates Host", type: :feature do
 
   scenario "deleting a hosting" do
     create_host
-    expect(page).to have_content("Brooklyn, NY 10 guests")
+    expect(page).to have_content("Brooklyn, NY private home, 10 guests")
     delete_host
-    expect(page).not_to have_content("Brooklyn, NY 10 guests")
+    expect(page).not_to have_content("Brooklyn, NY private home, 10 guests")
     expect(Hosting.with_deleted.last).to_not be_nil
   end
 
   scenario "updating a hosting guest number" do
     create_host
-    expect(page).to have_content("Brooklyn, NY 10 guests")
+    expect(page).to have_content("Brooklyn, NY private home, 10 guests")
     click_link 'Brooklyn, NY'
     find("#hosting_max_guests").select(9)
     click_button "Save"
-    expect(page).to have_content("Brooklyn, NY 9 guests")
+    expect(page).to have_content("Brooklyn, NY private home, 9 guests")
   end
 
   scenario "updating a hosting with invalid fields" do
@@ -78,16 +78,16 @@ RSpec.describe "User creates Host", type: :feature do
 
   scenario "updating a hosting zip code" do
     create_host
-    expect(page).to have_content("Brooklyn, NY 10 guests")
+    expect(page).to have_content("Brooklyn, NY private home, 10 guests")
     click_link 'Brooklyn, NY'
     fill_in "Where are you located?", with: '63130'
     find("#hosting_max_guests").select(10)
     click_button "Save"
-    expect(page).to have_content("63130 10 guests")
+    expect(page).to have_content("63130 private home, 10 guests")
   end
 
   scenario "geocoder does not return city or state" do
     create_host('63130', 1)
-    expect(page).to have_content("63130 1 guest")
+    expect(page).to have_content("63130 private home, 1 guest")
   end
 end

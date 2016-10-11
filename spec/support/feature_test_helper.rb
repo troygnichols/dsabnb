@@ -52,7 +52,7 @@ module FeatureTestHelper
   end
 
   def delete_host
-    click_link "Brooklyn, NY 10 guests"
+    click_link "Brooklyn, NY private home, 10 guests"
     click_link "I Can't Host"
   end
 end
