@@ -28,6 +28,10 @@ App.init = function() {
     App.Visits.init();
   }
 
+  if($('#hostings')) {
+    App.Hostings.init();
+  }
+
   $('.facebook-share').click(function() {
     FB.ui({
       method: 'share',

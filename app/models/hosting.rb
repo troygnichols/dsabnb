@@ -3,6 +3,10 @@ class Hosting < ActiveRecord::Base
   validates :zipcode, zipcode: { country_code: :es }
   validates :comment, length: { maximum: 140 }
 
+  validates_date :start_date, on: :create, presence: true
+  validate :validate_start_date_is_not_in_the_past, if: :start_date
+  validates_date :end_date, on: :create, on_or_after: :start_date
+
   acts_as_paranoid
 
   belongs_to :host, class_name: "User", foreign_key: :host_id
@@ -27,5 +31,16 @@ class Hosting < ActiveRecord::Base
 
   def was_contacted_for?(visit)
     Contact.exists?(visit_id: visit.id, hosting_id: self.id)
+  end
+
+  def validate_start_date_is_not_in_the_past
+    errors.add(:start_date, :in_past) unless start_date >= Time.zone.now.beginning_of_day
+  end
+
+  def start_and_end_dates
+    starting = start_date.strftime("%m/%d/%y")
+    ending = end_date.strftime("%m/%d/%y")
+
+    "#{starting} - #{ending}"
   end
 end
