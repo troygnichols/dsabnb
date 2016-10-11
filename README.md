@@ -22,11 +22,11 @@ We would love your help.
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
-* Run tests: `RAILS_ENV=test docker-compose run shell bash -c 'bin/rake db:migrate && bin/rake'`
+* Run tests: `RAILS_ENV=test docker-compose run --rm shell bash -c 'bin/rake db:migrate && bin/rake'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
 ## Updating gem versions
-* `docker-compose run shell bundle update [gemname]`
+* `docker-compose run --rm shell bundle update [gemname]`
 
 ## Connecting to dev DB
 * `docker-compose exec herokuPostgresql psql -U postgres`
