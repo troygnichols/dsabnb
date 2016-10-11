@@ -63,16 +63,19 @@ HHHHHH       →→HHHH
     <footer>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
-            <span class="copyright">&copy; <%= site_name %> <%= Time.now.year %></span>
-          </div>
-          <div class="col-md-4">
-            <%= link_to "Privacy Policy", privacy_policy_path %>
-          </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <ul class="list-inline quicklinks">
               <li><%= link_to "FAQ", page_path('faq') %></li>
             </ul>
+          </div>
+          <div class="col-md-3">
+            <%= link_to "Feedback", "http://goo.gl/forms/PHeNrIVtaRMGdTU22" %>
+          </div>
+          <div class="col-md-3">
+            <%= link_to "Privacy", privacy_policy_path %>
+          </div>
+          <div class="col-md-3">
+            <span class="copyright">&copy; <%= site_name %> <%= Time.now.year %></span>
           </div>
         </div>
       </div>
