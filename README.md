@@ -28,6 +28,9 @@ We would love your help.
 ## Updating gem versions
 * `docker-compose run --rm shell bundle update [gemname]`
 
+## Modifying schema
+* EXAMPLE: `docker-compose run --rm shell rails generate migration AddAccomodationTypeToHosting accomodation_type:integer`
+
 ## Connecting to dev DB
 * `docker-compose exec herokuPostgresql psql -U postgres`
 
