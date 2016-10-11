@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
   def update_and_redirect
     hosting.increment(:contact_count).save
     redirect_to visit_url(visit),
-      notice: "We will send #{hosting.host.first_name} your contact info!"
+      notice: "We will send #{hosting.host.first_name} your contact info later tonight!"
   end
 
   def hosting
