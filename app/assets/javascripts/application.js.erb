@@ -24,13 +24,7 @@
 window.App || (window.App = {});
 
 App.init = function() {
-  if($('#visits').length) {
-    App.Visits.init();
-  }
-
-  if($('#hostings').length) {
-    App.Hostings.init();
-  }
+  initDatePicker();
 
   $('.facebook-share').click(function() {
     FB.ui({
