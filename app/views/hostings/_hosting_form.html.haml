@@ -26,8 +26,8 @@
       %span.hosting Preferred maximum number of guests.
 
     .form-group
-      = f.label :comment, "Do you have a message for your visitors?"
-      = f.text_field :comment, class: 'form-control', placeholder: "Maximum 140 characters (optional)"
-      %span.hosting e.g. number of available beds or accessible hours.
+      = f.label :comment, "Please share any additional information about your accommodations:"
+      = f.text_field :comment, class: 'form-control'
+      %span.hosting e.g. number of available beds, cost per person in shared hotel room or rental house, or accessible hours.
 
   = f.submit "Save", class: 'btn btn-success btn-block btn-lg'
