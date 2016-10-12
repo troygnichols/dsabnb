@@ -28,9 +28,11 @@ class Visit < ActiveRecord::Base
   end
 
   def available_hostings(current_user)
+    # A hosting's start_date must be strictly less than visit end_date 
+    # because a visitor leaves on the last day (doesn't stay over that night)
     available_hostings = Hosting
       .near(self, 75, order: 'distance')
-      .where("start_date <= ?", self.end_date)
+      .where("start_date < ?", self.end_date)
       .where("end_date >= ?", self.start_date)
 
     if Rails.env.production? or Rails.env.staging?
