@@ -22,6 +22,8 @@
             %span #{ hosting.city || hosting.zipcode } - #{ hosting.distance.round(1) } miles
           %li
             %small Space for #{ hosting.max_guests }
+          %li
+            %small Available #{ hosting.start_and_end_dates }
       %a{ href: "##{ tab_id }",
           "role" => "button",
           class: "btn btn-md #{ button_class } contact-button right",

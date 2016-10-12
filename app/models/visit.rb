@@ -31,6 +31,8 @@ class Visit < ActiveRecord::Base
     available_hostings = Hosting
       .near(self, 75, order: 'distance')
       .where("max_guests >= ?", num_travelers)
+      .where("start_date <= ?", self.end_date)
+      .where("end_date >= ?", self.start_date)
 
     if Rails.env.production? or Rails.env.staging?
       # :nocov:
