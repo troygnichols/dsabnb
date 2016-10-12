@@ -30,7 +30,6 @@ class Visit < ActiveRecord::Base
   def available_hostings(current_user)
     available_hostings = Hosting
       .near(self, 75, order: 'distance')
-      .where("max_guests >= ?", num_travelers)
       .where("start_date <= ?", self.end_date)
       .where("end_date >= ?", self.start_date)
 
