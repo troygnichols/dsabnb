@@ -44,10 +44,24 @@ module FeatureTestHelper
     click_button "Contact Hosts"
   end
 
-  def create_host(zipcode='11211', max_guests=10)
+  def today_db
+    Date.current.to_s(:db)
+  end
+
+  def todayp1_db
+    (Date.current + 1.days).to_s(:db)
+  end
+
+  def todayp2_db
+    (Date.current + 2.days).to_s(:db)
+  end
+
+  def create_host(zipcode='11211', max_guests=10, start_date=today_db, end_date=todayp2_db)
     click_link "I Can Host"
     fill_in "Where are you located?", with: zipcode
     find('#hosting_max_guests').select(max_guests)
+    find('#hosting_start_date', :visible => false).set(start_date)
+    find('#hosting_end_date',   :visible => false).set(end_date)
     click_button("Save")
   end
 
