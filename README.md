@@ -41,7 +41,11 @@ We would love your help.
 * `heroku plugins:install heroku-container-tools`
 * get application.yml from DJ and put it in config/
 * `heroku container:release --app hillarybnb`   NOTE that this deploys whatever you have locally in your dev environment, not what is committed to git or pushed to github
+
+If there are database migrations to be deployed:
 * `heroku run rake db:migrate`
+* `heroku restart`
+
 * `heroku open --app hillarybnb`
 
 ## Sending daily emails
