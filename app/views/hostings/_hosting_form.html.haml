@@ -16,11 +16,11 @@
       %span.hosting Preferred maximum number of guests.
 
     .form-group
-      %label What dates can you host?
+      %label What nights can you host?
       = f.hidden_field :start_date, class: "form-control"
       = f.hidden_field :end_date, class: "form-control"
       %div.datepicker
-      %small.dateText Offering start and end dates
+      %small.dateText Hosting these nights
 
     .form-group
       = f.label :comment, "Do you have a message for your visitors?"

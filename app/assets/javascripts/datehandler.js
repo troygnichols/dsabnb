@@ -45,31 +45,34 @@ initDatepickerGen = function(startDate, endDate, submitButton, updateText) {
   });
 };
 
-visitsUpdateDateText = function(startDate, endDate) {
+updateDateText = function(startDate, endDate, actionText, leavingText) {
   var arrive = moment(startDate.val());
   var depart = moment(endDate.val());
-  var newText = 'Arrival and departure dates';
+  var newText = actionText + ' these nights';
 
   if(arrive.isValid()) {
-    newText = 'Arriving ' + arrive.format('MMM Do') + ' and leaving ';
-    newText += depart.isValid() ? depart.format('MMM Do') : arrive.add(1, 'd').format('MMM Do');
+    var departActual = depart.isValid() ? depart : arrive;
+    var numDays = departActual.diff(arrive, 'days') + 1;
+    if(numDays > 1) {
+      newText = actionText + ' ' + numDays;
+      newText += ' nights, ' + arrive.format('MMM Do') + ' through ';
+      newText += departActual.format('MMM Do');
+    } else {
+      newText = actionText + ' 1 night, ' + arrive.format('MMM Do');
+    }
+    newText += leavingText + departActual.add(1, 'd').format('MMM Do');
   }
 
   $('.dateText').html(newText + '.');
 };
+
+visitsUpdateDateText = function(startDate, endDate) {
+  return updateDateText(startDate, endDate, "Staying", ', leaving on ');
+}
 
 hostingsUpdateDateText = function(startDate, endDate) {
-  var start = moment(startDate.val());
-  var end = moment(endDate.val());
-  var newText = 'Offering start and end dates';
-
-  if(start.isValid()) {
-    newText = 'Offering ' + start.format('MMM Do') + ' through ';
-    newText += end.isValid() ? end.format('MMM Do') : start.add(1, 'd').format('MMM Do');
-  }
-
-  $('.dateText').html(newText + '.');
-};
+  return updateDateText(startDate, endDate, "Hosting", ' with any guests leaving on ');
+}
 
 initDatePicker = function() {
   if($('#visits').length) {
