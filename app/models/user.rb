@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActiveModel::Dirty
 
   MAX_DOMESTIC_PHONE_NUMBER = 12
   MAX_INTERNATIONAL_PHONE_NUMBER = 14
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
   validates_format_of :email,
     :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
     allow_nil: true
+  validate :no_changes_to_email_after_confirmed
 
   before_create :create_confirmation_token
 
@@ -65,6 +67,12 @@ class User < ActiveRecord::Base
       end
     elsif phone.size < MAX_DOMESTIC_PHONE_NUMBER
       self.errors.add(:phone, "number is too short: #{phone}")
+    end
+  end
+
+  def no_changes_to_email_after_confirmed
+    if email_changed? && email_confirmed && !email_confirmed_changed?
+      self.errors.add(:email, "cannot be changed after being confirmed")
     end
   end
 
