@@ -71,7 +71,7 @@ visitsUpdateDateText = function(startDate, endDate) {
 }
 
 hostingsUpdateDateText = function(startDate, endDate) {
-  return updateDateText(startDate, endDate, "Hosting", ' with any guests leaving on ');
+  return updateDateText(startDate, endDate, "Hosting", ', with any guests leaving on ');
 }
 
 initDatePicker = function() {
