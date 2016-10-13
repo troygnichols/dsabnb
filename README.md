@@ -25,6 +25,7 @@ We would love your help.
 * `open "http://$(docker-machine ip default):8080"`
 * `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
 * Run tests: `RAILS_ENV=test docker-compose run --rm shell bash -c 'bin/rake db:migrate && bin/rake'`
+* Populate test data: `docker-compose run --rm shell bash -c 'bundle exec rake db:reset'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
 ## Updating gem versions
