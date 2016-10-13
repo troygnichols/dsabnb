@@ -131,4 +131,10 @@ RSpec.describe User, type: :model do
       .to raise_error(/is too long: \+45440-455-5121/)
   end
 
+  it "is not valid to change the email after being confirmed" do 
+    user = FactoryGirl.create(:user, email_confirmed: true)
+    expect { user.update_attributes!(email: "test@example.com") }
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
 end
