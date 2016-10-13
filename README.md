@@ -18,6 +18,8 @@ We would love your help.
 * fork HillaryBNB on github: `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
 * `cp config/application.yml.example config/application.yml`
 * `export RAILS_ENV=development`
+* `docker-machine create -d virtualbox default`
+* `eval $(docker-machine env default)`
 * `docker-compose build`
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
