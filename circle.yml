@@ -1,0 +1,3 @@
+test:
+  override:
+    - export RAILS_ENV=test DEFAULT_SENDER_ADDRESS=foobar; bin/rake db:migrate && bin/rake
