@@ -86,9 +86,11 @@ A mailgun account is required to send the confirmation email when signing up.
 
 * Go to [Mailgun](https://mailgun.com) and sign up for an account
 * You will start with a sandbox account with up to 300 emails per day, or you can create a real one with 10k free emails per month.
+    * If using the sandbox account, add your own email as an [authorized recipient](https://mailgun.com/app/testing/recipients).
 * Go to your sandbox domain page to fill out all the `MAILGUN_*` variables in `config/application.yml`
-* Go to the main page (https://mailgun.com/app/dashboard) and search for `API Keys` to find your public key.
+    * Go to the [main page](https://mailgun.com/app/dashboard) and search for `API Keys` to find your public key.
 * Restart `docker-compose restart web`
+* If you see a 400 error from Mailgun, check your [logs](https://mailgun.com/app/logs). Mailgun may disable your account pending business verification; you'll need to contact support to have them enable it or borrow someone else's sandbox credentials if they don't respond.
 
 ## When does HillaryBNB send emails?
 
