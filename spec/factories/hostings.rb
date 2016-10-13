@@ -5,6 +5,8 @@ FactoryGirl.define do
     f.comment { Faker::Lorem.paragraph(1)[0...140] }
     f.max_guests { rand(1..10) }
     f.contact_count { 0 }
+    f.start_date { Date.current.to_s(:db) }
+    f.end_date { (Date.current + 2.days).to_s(:db) }
   end
 
 end

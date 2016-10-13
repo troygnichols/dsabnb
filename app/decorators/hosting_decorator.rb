@@ -12,4 +12,9 @@ class HostingDecorator < Draper::Decorator
   def guest_details
     (accomodation_type == 'home' ? 'private home' : 'hotel share') + ", " + num_guest_details
   end
+
+  def short_details
+    details = guest_details
+    details << " (#{start_and_end_dates})"
+  end
 end

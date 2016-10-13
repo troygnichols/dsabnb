@@ -26,18 +26,20 @@ ActiveRecord::Schema.define(version: 20161011194129) do
   add_index "contacts", ["hosting_id", "visit_id"], name: "index_contacts_on_hosting_id_and_visit_id", unique: true, using: :btree
 
   create_table "hostings", force: :cascade do |t|
-    t.string   "zipcode",                       null: false
-    t.integer  "max_guests",        default: 1, null: false
-    t.float    "latitude",                      null: false
-    t.float    "longitude",                     null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "host_id",                       null: false
-    t.integer  "contact_count",     default: 0, null: false
+    t.string   "zipcode",                                  null: false
+    t.integer  "max_guests",        default: 1,            null: false
+    t.float    "latitude",                                 null: false
+    t.float    "longitude",                                null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "host_id",                                  null: false
+    t.integer  "contact_count",     default: 0,            null: false
     t.text     "comment"
     t.datetime "deleted_at"
     t.string   "city"
     t.string   "state"
+    t.date     "start_date",        default: '2016-10-10', null: false
+    t.date     "end_date",          default: '2016-11-10', null: false
     t.integer  "accomodation_type", default: 0
   end
 

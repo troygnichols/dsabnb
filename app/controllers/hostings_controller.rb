@@ -2,7 +2,7 @@ class HostingsController < ApplicationController
   before_action :ensure_current_user_is_host, only: [:edit, :update, :destroy]
 
   def new
-    @hosting ||= Hosting.new(host_id: params[:user_id])
+    @hosting ||= Hosting.new(host_id: params[:user_id], start_date: Date.current)
   end
 
   def create
@@ -45,7 +45,7 @@ class HostingsController < ApplicationController
   def hosting_params
     params
       .require(:hosting)
-      .permit(:zipcode, :max_guests, :comment, :accomodation_type)
+      .permit(:zipcode, :max_guests, :comment, :accomodation_type, :start_date, :end_date)
   end
 
   def ensure_current_user_is_host

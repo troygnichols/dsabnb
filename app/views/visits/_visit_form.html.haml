@@ -8,10 +8,11 @@
       %small Zip Code near your destination.
 
     .form-group
-      %label What are your arrival and departure dates?
+      %label What nights are you staying?
       = f.hidden_field :start_date, class: "form-control"
       = f.hidden_field :end_date, class: "form-control"
       %div.datepicker
+      %small.dateText Staying over these nights.
 
     .form-group
       = f.label :num_travelers, "How many total travelers?"

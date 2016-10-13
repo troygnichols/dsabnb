@@ -42,7 +42,7 @@ RSpec.describe "User Creates Visit", type: :feature do
     FactoryGirl.create(:user, phone: '2345678901')
     FactoryGirl.create :hosting,
       zipcode: '11211', max_guests: 10, host_id: User.last.id
-    create_visit(Date.current, Date.current + 1.days)
+    create_visit Date.current, Date.current + 1.days
 
     expect(page).to have_content('Hosts near 11211')
   end
@@ -70,16 +70,51 @@ RSpec.describe "User Creates Visit", type: :feature do
     end
   end
 
+  scenario "don't match listings when visit end date is before hosting start date" do
+    FactoryGirl.create(:user, phone: '2345678901')
+    FactoryGirl.create(:hosting,
+      zipcode: '11211', max_guests: 10, host_id: User.last.id,
+      start_date: Date.current + 3.days, end_date: Date.current + 4.days)
+
+    create_visit(Date.current + 1.days, Date.current + 2.days, '11211')
+
+    expect(page).to have_content('Nobody here, yet.')
+  end
+
+  scenario "match listings with visit end date the same as listing start date" do
+    FactoryGirl.create(:user, phone: '2345678901')
+    FactoryGirl.create(:hosting,
+      zipcode: '11211', max_guests: 10, host_id: User.last.id,
+      start_date: Date.current + 3.days, end_date: Date.current + 4.days)
+
+    create_visit(Date.current + 1.days, Date.current + 3.days, '11211')
+
+    expect(page).to have_content('Hosts near 11211')
+  end
+
+  scenario "match listings with partial overlap" do
+    FactoryGirl.create(:user, phone: '2345678901')
+    FactoryGirl.create(:hosting,
+      zipcode: '11211', max_guests: 10, host_id: User.last.id,
+      start_date: Date.current + 3.days, end_date: Date.current + 5.days)
+
+    create_visit(Date.current + 4.days, Date.current + 7.days, '11211')
+
+    expect(page).to have_content('Hosts near 11211')
+  end
+
   scenario "creating a new international visit with available hosts" do
     FactoryGirl.create(:user, phone: '+46 234-567890')
-    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 10, host_id: User.last.id)
+    FactoryGirl.create(:hosting, zipcode: '11211', max_guests: 10, 
+      host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
 
     expect(page).to have_content('Hosts near 11211')
   end
 
   scenario "editing an existing visit" do
-    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, host_id: User.last.id)
+    FactoryGirl.create(:hosting, zipcode: '11221', max_guests: 10, 
+      host_id: User.last.id)
     create_visit(Date.current, Date.current + 1.days)
     visit user_url(User.last)
     click_link '11211'

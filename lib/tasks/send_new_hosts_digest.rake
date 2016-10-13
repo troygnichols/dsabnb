@@ -2,7 +2,7 @@ desc 'send new host digest'
 
 task send_new_hosts_digest: :environment do
   Visit.includes(:user).each do |visit|
-    new_host_data = Hosting.includes(:host).near(visit).where("created_at >= ?", 1.day.ago).map do |new_hosting|
+    new_host_data = Hosting.includes(:host).near(visit).where("created_at >= ?", 1.day.ago).where("start_date <= ?", visit.end_date).where("end_date >= ?", visit.start_date).map do |new_hosting|
       {
         hosting: new_hosting,
         host: new_hosting.host

@@ -24,9 +24,7 @@
 window.App || (window.App = {});
 
 App.init = function() {
-  if($('#visits')) {
-    App.Visits.init();
-  }
+  initDatePicker();
 
   $('.facebook-share').click(function() {
     FB.ui({

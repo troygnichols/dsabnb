@@ -26,6 +26,13 @@
       %span.hosting Preferred maximum number of guests.
 
     .form-group
+      %label What nights can you host?
+      = f.hidden_field :start_date, class: "form-control"
+      = f.hidden_field :end_date, class: "form-control"
+      %div.datepicker
+      %span.dateText Hosting these nights
+
+    .form-group
       = f.label :comment, "Please share any additional information about your accommodations:"
       = f.text_field :comment, class: 'form-control'
       %span.hosting e.g. number of available beds, cost per person in shared hotel room or rental house, or accessible hours.
