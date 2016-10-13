@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-- 2.3.1
+- 2.2.3
 env:
 - DB=postgresql
 addons:
@@ -13,21 +13,10 @@ script:
 cache: bundler
 notifications:
   webhooks:
-    urls:
-    - https://webhooks.gitter.im/e/04f07b2eeecfad3cf278
     on_success: change
   email:
     recipients:
-    - justin.schulz@gmail.com
-    - jasnow@hotmail.com
+    - dsjoerg@gmail.com
     on_success: change
     on_failure: always
 sudo: false
-deploy:
-  provider: heroku
-  api_key:
-    secure: QOFHOyvvpLugE/A59rP560NP3CjdGcGuh2Se8zKSPDQZsoOVlf+Mj0vffwYpRbbjcRZwXVnDIRjmPHWk/67JpXiwFPqbxFJgqgxc5K4C7ZhKm9cyukAGUqPzfyGd45tzxiCd+vGv3pFsTnZe0FsUQRyke3/ZHt3cJdqfhHtO7dLIZCiflh4+oqRBAOASloPxdUetC7WqUoZ1ifrQ/vq4kenLuJVenzXMiaNssDuV7mthTaDkv7uXt5e88AqY40mhHuIKVqpcbRPFDxQ9V2tS41tTPKWGZx0Kt/LHO2e9CyFmFFxwdUqtrYiGfcc5XjAZbxBXNujNjxDSnDkVIA7QjBDXvAwSqIXh8t/14/Hs6XjqutCC/t3v+8ipbOSJ3RGKbuKoI6LG8Ye7PI5uF5QbGwPZl+hFPICCxGKZ+bouE0hMT6OP98yzcE+vhwC5Xwl3JgzZdPPpH/yIIbYG2K+QBC90113o6W8fsJ7KkiZ58rDZVYg6WJCkE+5avfteFssZbUDGB/0q6RX2AenvIuEIQT8H5wlRk0aUA7uiXJ77ysHwy2eR/5pmnHx4lcqE2s1XBhb+oUGG3KqKFCVOViG05isAlqD7SDXomoJ6VpNJUJZgD4gjfeCbKgXEzvyZugybKj9XQTWhbwzXhFLJsPIfl1WDHsFboq0u+ff9BOVkqhw=
-  app: bbnb-staging
-  skip_cleanup: true
-  on:
-    repo: DevProgress/HillaryBNB
