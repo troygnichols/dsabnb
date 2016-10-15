@@ -5,12 +5,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      UserMailer.new_contacts_digest(
-        @contact.hosting,
-        @contact.hosting.host,
-        new_contact_data
-      ).deliver_now
-
+      email_host
       update_and_redirect
     else
       flash.now[:errors] = @contact.errors.full_messages
@@ -46,5 +41,13 @@ class ContactsController < ApplicationController
       visit: @contact.visit,
       contact: @contact
     }
+  end
+
+  def email_host
+    UserMailer.new_contacts_digest(
+      @contact.hosting,
+      @contact.hosting.host,
+      new_contact_data
+    ).deliver_now
   end
 end
