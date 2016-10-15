@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'privacy_policy', to: 'policies#facebook'
 
+  resource :contacts, only: [:create]
+
   resources :visits, only: [:create, :destroy, :update, :show, :edit]
 
   resources :hostings, only: [:create, :destroy, :edit, :update]
