@@ -5,7 +5,7 @@ Here's a list of all the new hosts available for your visit to <%= @visit.city %
 <hr>
 
 <% @host_data.each do |listing| %>
-  <%= listing[:host].first_name %> signed up as a host <%= listing[:hosting].distance_from(@visit).round(1) %> mi. from <%= @visit.city || @visit.zipcode %> with availability from <%= listing[:hosting].start_date %> through <%= listing[:hosting].end_date %>.
+  <%= listing[:host].first_name %> signed up as a host of a <%= listing[:hosting].decorate.pretty_accomodation_type %> <%= listing[:hosting].distance_from(@visit).round(1) %> mi. from <%= @visit.city || @visit.zipcode %> with availability from <%= listing[:hosting].start_date %> through <%= listing[:hosting].end_date %>.
   <br><br>
 
   <% unless listing[:hosting].comment.empty? %>
