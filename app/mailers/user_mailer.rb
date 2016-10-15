@@ -52,6 +52,12 @@ class UserMailer < ApplicationMailer
       subject: "You've been contacted!",
       html: template("user_mailer/new_contacts_digest.html.erb")
     )
+
+    @contact_data.map do |contact|
+      contact_record = Contact.find(contact[:contact].id)
+      contact_record.sent = Time.now
+      contact_record.save!
+    end
   end
 
   def new_contact_immediate(hosting, host, contact_info)
@@ -65,6 +71,10 @@ class UserMailer < ApplicationMailer
       subject: "You've been contacted!",
       html: template("user_mailer/new_contact_immediate.html.erb")
     )
+
+    contact_record = Contact.find(@contact_info[:contact].id)
+    contact_record.sent = Time.now
+    contact_record.save!
   end
 
   private
