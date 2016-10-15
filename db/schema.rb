@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011194129) do
+ActiveRecord::Schema.define(version: 20161015182226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161011194129) do
     t.integer  "visit_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sent"
   end
 
   add_index "contacts", ["hosting_id", "visit_id"], name: "index_contacts_on_hosting_id_and_visit_id", unique: true, using: :btree
@@ -38,9 +39,9 @@ ActiveRecord::Schema.define(version: 20161011194129) do
     t.datetime "deleted_at"
     t.string   "city"
     t.string   "state"
+    t.integer  "accomodation_type", default: 0
     t.date     "start_date",        default: '2016-10-10', null: false
     t.date     "end_date",          default: '2016-11-10', null: false
-    t.integer  "accomodation_type", default: 0
   end
 
   add_index "hostings", ["host_id"], name: "index_hostings_on_host_id", using: :btree
