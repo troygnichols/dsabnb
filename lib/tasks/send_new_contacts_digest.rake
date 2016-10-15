@@ -4,6 +4,7 @@ task send_new_contacts_digest: :environment do
   Hosting.includes(:host, contacts: [{ visit: [:user] }]).all.each do |hosting|
     new_contact_data = hosting.contacts.where("created_at >= ?", 1.day.ago).map do |new_contact|
       next unless new_contact.visit
+      next unless new_contact.sent.nil?
 
       {
         visitor: new_contact.visit.user,

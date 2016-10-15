@@ -34,15 +34,35 @@ RSpec.describe UserMailer, type: :mailer do
     let(:visit_2) {  FactoryGirl.create(:visit, user: visit_user_1, start_date: Time.zone.now.to_date + 4.days, end_date: Time.zone.now.to_date + 5.days) }
     let(:contact_2) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit_2.id) }
 
+    let(:new_contact_data) do
+      hosting.contacts.map do |new_contact|
+        {
+          visitor: new_contact.visit.user,
+          visit: new_contact.visit,
+          contact: new_contact
+        }
+      end
+    end
+
     before do
       expect(hosting.contacts).to include(contact_1, contact_2)
+
+      hosting.contacts.each do |contact|
+        expect(contact.sent).to be_nil
+      end
 
       stub_request(:post, %r{api.mailgun.net/v3/messages})
         .to_return(status: 200)
     end
 
-    it 'does something' do
-      puts "hello"
+    it 'updates the contacts as sent' do
+      UserMailer.new_contacts_digest(hosting, hosting.host, new_contact_data).deliver_now
+
+      hosting.reload
+
+      hosting.contacts.each do |contact|
+        expect(contact.sent).to_not be_nil
+      end
     end
   end
-  end
+end
