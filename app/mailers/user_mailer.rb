@@ -54,6 +54,19 @@ class UserMailer < ApplicationMailer
     )
   end
 
+  def new_contact_immediate(hosting, host, contact_info)
+    @hosting, @host = hosting, host
+    @contact_info = contact_info
+
+    deliver_message(
+      from: default_sender_address,
+      to: @host.email,
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['BASE_DOMAIN']}",
+      subject: "You've been contacted!",
+      html: template("user_mailer/new_contact_immediate.html.erb")
+    )
+  end
+
   private
 
   def deliver_message(message_params)
