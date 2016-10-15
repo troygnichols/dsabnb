@@ -4,16 +4,14 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    #puts "one"
-    #puts @contact.visit.start_date.class
-    #puts @contact.visit.start_date
-    #puts "two"
-   # puts Date.today
-   # puts "three"
-   # puts (@contact.visit.start_date - Date.today).to_i
-
     if @contact.save
-        email_host if (@contact.visit.start_date - Date.today).to_i <= 2
+      if (@contact.visit.start_date - Date.today).to_i <= 2
+        email_host
+        flash[:notice] = "We have sent #{hosting.host.first_name} your contact info!"
+      else
+        flash[:notice] = "We will send #{hosting.host.first_name} your contact info later tonight!"
+      end
+
       update_and_redirect
     else
       flash.now[:errors] = @contact.errors.full_messages
@@ -31,8 +29,7 @@ class ContactsController < ApplicationController
 
   def update_and_redirect
     hosting.increment(:contact_count).save
-    redirect_to visit_url(visit),
-      notice: "We will send #{hosting.host.first_name} your contact info later tonight!"
+    redirect_to visit_url(visit)
   end
 
   def hosting
@@ -52,7 +49,7 @@ class ContactsController < ApplicationController
   end
 
   def email_host
-    UserMailer.new_contacts_digest(
+    UserMailer.new_contact_immediate(
       @contact.hosting,
       @contact.hosting.host,
       new_contact_data

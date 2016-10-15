@@ -4,6 +4,7 @@ RSpec.describe ContactsController, type: :controller do
   describe '#create' do
 
     let(:user) { FactoryGirl.create(:user, email_confirmed: true) }
+    let(:visit_user) { FactoryGirl.create(:user) }
 
     let(:user_mailer_double) { double('UserMailer', deliver: true, deliver_now: true) }
 
@@ -29,7 +30,7 @@ RSpec.describe ContactsController, type: :controller do
     context 'when the visit is within the next 48 hours' do
       let(:hosting) { FactoryGirl.create(:hosting, host_id: user.id) } # needs to be created after Geocoder methods are stubbed
 
-      let(:visit) {  FactoryGirl.create(:visit, start_date: Time.zone.now.to_date + 1.day) } # start data is within 48 hours
+      let(:visit) {  FactoryGirl.create(:visit, user: visit_user, start_date: Time.zone.now.to_date + 1.day) } # start data is within 48 hours
 
       let(:contact) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit.id) }
 
@@ -44,7 +45,7 @@ RSpec.describe ContactsController, type: :controller do
           contact: contact
         }
 
-        expect(UserMailer).to receive(:new_contacts_digest).with(hosting, hosting.host, new_contact_data).and_return(user_mailer_double)
+        expect(UserMailer).to receive(:new_contact_immediate).with(hosting, hosting.host, new_contact_data).and_return(user_mailer_double)
         expect(user_mailer_double).to receive(:deliver_now)
 
         post :create, visit_id: visit.id, hosting_id: hosting.id
@@ -55,7 +56,7 @@ RSpec.describe ContactsController, type: :controller do
 
       let(:hosting) { FactoryGirl.create(:hosting, host_id: user.id) } # needs to be created after Geocoder methods are stubbed
 
-      let(:visit) {  FactoryGirl.create(:visit, start_date: Time.zone.now.to_date + 3.days) } # start data is > 48 hours out
+      let(:visit) {  FactoryGirl.create(:visit, user: visit_user, start_date: Time.zone.now.to_date + 3.days) } # start data is > 48 hours out
 
       let(:contact) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit.id) }
 
