@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
       redirect_to user_url(@user)
     else
-      flash[:errors] = ["Sorry, could not confirm user"]
+      flash[:errors] = ["Sorry, something went wrong.  Please try again, or email us at admin@hillarybnb.com for help."]
       redirect_to root_url
     end
   end
