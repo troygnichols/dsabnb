@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
       redirect_to user_url(@user)
     else
-      flash[:error] = "Sorry, could not confirm user"
+      flash[:errors] = ["Sorry, could not confirm user"]
       redirect_to root_url
     end
   end
