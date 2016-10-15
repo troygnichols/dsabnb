@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
   describe '#create' do
+
+    let(:user) { FactoryGirl.create(:user, email_confirmed: true) }
+
+    let(:user_mailer_double) { double('UserMailer', deliver: true, deliver_now: true) }
+
     before do
       allow(controller).to receive(:current_user).and_return(user)
 
@@ -22,12 +27,11 @@ RSpec.describe ContactsController, type: :controller do
     end
 
     context 'when the visit is within the next 48 hours' do
-      let(:user) { FactoryGirl.create(:user, email_confirmed: true) }
-      let(:hosting) { FactoryGirl.create(:hosting, host_id: user.id) }
-      let(:visit) {  FactoryGirl.create(:visit, start_date: Time.zone.now.to_date + 1.day) } # start data is within 48 hours
-      let(:contact) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit.id) }
+      let(:hosting) { FactoryGirl.create(:hosting, host_id: user.id) } # needs to be created after Geocoder methods are stubbed
 
-      let(:user_mailer_double) { double('UserMailer', deliver: true, deliver_now: true) }
+      let(:visit) {  FactoryGirl.create(:visit, start_date: Time.zone.now.to_date + 1.day) } # start data is within 48 hours
+
+      let(:contact) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit.id) }
 
       before do
         allow(Contact).to receive(:new).and_return(contact)
@@ -48,7 +52,28 @@ RSpec.describe ContactsController, type: :controller do
     end
 
     context 'when the visit is not within the next 48 hours' do
-      it 'does not immediately mail the contact info'
+
+      let(:hosting) { FactoryGirl.create(:hosting, host_id: user.id) } # needs to be created after Geocoder methods are stubbed
+
+      let(:visit) {  FactoryGirl.create(:visit, start_date: Time.zone.now.to_date + 3.days) } # start data is > 48 hours out
+
+      let(:contact) {  FactoryGirl.create(:contact, hosting_id: hosting.id, visit_id: visit.id) }
+
+      before do
+        allow(Contact).to receive(:new).and_return(contact)
+      end
+
+      it 'does not immediately mail the contact info' do
+        new_contact_data = {
+          visitor: contact.visit.user,
+          visit: contact.visit,
+          contact: contact
+        }
+
+        expect(UserMailer).to_not receive(:new_contacts_digest).with(hosting, hosting.host, new_contact_data)
+
+        post :create, visit_id: visit.id, hosting_id: hosting.id
+      end
     end
   end
 end
