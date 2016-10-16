@@ -68,7 +68,7 @@ class UserMailer < ApplicationMailer
       from: default_sender_address,
       to: @host.email,
       'h:Reply-To' => "DO-NOT-REPLY@#{ENV['BASE_DOMAIN']}",
-      subject: "You've been contacted!",
+      subject: "You've been contacted! [Urgent]",
       html: template("user_mailer/new_contact_immediate.html.erb")
     )
 
