@@ -21,7 +21,7 @@
           %li
             %span #{ hosting.city || hosting.zipcode } - #{ hosting.distance.round(1) } miles
           %li
-            %small Space for #{ hosting.max_guests }
+            %small Space for #{ hosting.max_guests } in a #{ hosting.decorate.pretty_accomodation_type }
           %li
             %small Available #{ hosting.start_and_end_dates }
       %a{ href: "##{ tab_id }",
