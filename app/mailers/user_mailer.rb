@@ -52,6 +52,29 @@ class UserMailer < ApplicationMailer
       subject: "You've been contacted!",
       html: template("user_mailer/new_contacts_digest.html.erb")
     )
+
+    @contact_data.map do |contact|
+      contact_record = Contact.find(contact[:contact].id)
+      contact_record.sent = Time.now
+      contact_record.save!
+    end
+  end
+
+  def new_contact_immediate(hosting, host, contact_info)
+    @hosting, @host = hosting, host
+    @contact_info = contact_info
+
+    deliver_message(
+      from: default_sender_address,
+      to: @host.email,
+      'h:Reply-To' => "DO-NOT-REPLY@#{ENV['BASE_DOMAIN']}",
+      subject: "You've been contacted!",
+      html: template("user_mailer/new_contact_immediate.html.erb")
+    )
+
+    contact_record = Contact.find(@contact_info[:contact].id)
+    contact_record.sent = Time.now
+    contact_record.save!
   end
 
   private

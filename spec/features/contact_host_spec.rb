@@ -28,7 +28,7 @@ RSpec.describe "Visitor contacts host", type: :feature do
     click_link("Contact")
     click_link("Send my contact info")
 
-    expect(page).to have_content("We will send Jane your contact info later tonight!")
+    expect(page).to have_content("We have sent Jane your contact info!")
   end
 
   scenario 'Visitor tries to contact host twice for same visit' do
@@ -56,6 +56,6 @@ RSpec.describe "Visitor contacts host", type: :feature do
     create_visit
     click_link("Contact")
     click_link("Send my contact info")
-    expect(page).to have_content("We will send Jane your contact info later tonight!")
+    expect(page).to have_content("We have sent Jane your contact info!")
   end
 end

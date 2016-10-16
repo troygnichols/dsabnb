@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'send_new_contacts_digest' do
   let(:hosting_relation) { double(:hosting_relation, all: all_hostings) }
   let(:all_hostings) { [contacted_hosting, uncontacted_hosting] }
-  let(:contact) { double(:contact, visit: visit) }
+  let(:contact) { double(:contact, visit: visit, sent: nil) }
   let(:contacted_host) { double(:contacted_host) }
   let(:contacted_hosting) { double(:contacted_hosting, host: contacted_host, contacts: contact_relation) }
   let(:empty_contact_relation) { double(:empty_contact_relation) }

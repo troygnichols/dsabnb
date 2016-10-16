@@ -31,7 +31,7 @@ module FeatureTestHelper
 
   def create_visit(
       start_date=Date.current,
-      end_date=Date.current + 1.days,
+      end_date=Date.current + 1.day,
       zipcode='11211',
       num_travelers=10
     )
