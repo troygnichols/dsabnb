@@ -39,3 +39,7 @@ en:
           attributes:
             start_date:
               in_past: of visits cannot be created in the past
+        hosting:
+          attributes:
+            start_date:
+              in_past: of host listing cannot be in the past
