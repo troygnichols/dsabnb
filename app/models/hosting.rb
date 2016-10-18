@@ -33,6 +33,10 @@ class Hosting < ActiveRecord::Base
   end
 
   def was_contacted_for?(visit)
+    Contact.where(visit_id: visit.id, hosting_id: self.id).first.sent.present?
+  end
+
+  def has_contact_for?(visit)
     Contact.exists?(visit_id: visit.id, hosting_id: self.id)
   end
 

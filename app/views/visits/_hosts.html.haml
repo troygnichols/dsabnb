@@ -2,8 +2,11 @@
 - host_name = hosting.first_name
 - heading_id = "heading#{ index }"
 - tab_id = "collapse#{ index }"
-  - if hosting.was_contacted_for?(visit)
-    - button_text = "✔ Contacted"
+  - if hosting.has_contact_for?(visit)
+    - if hosting.was_contacted_for?(visit)
+      - button_text = "✔ Contacted"
+    - else
+      - button_text = "Will Contact Host Tonight"
     - button_class = "btn-success"
     - button_collapsable = ""
   - else
@@ -37,7 +40,7 @@
                                  "aria-labelledby" => "#{heading_id}",
                                  "aria-expanded" => "false" }
       %div.panel-body
-        - unless hosting.was_contacted_for?(visit)
+        - unless hosting.has_contact_for?(visit)
           = render 'contact_host_instructions',
             host_name: host_name,
             hosting: hosting,
