@@ -24,7 +24,9 @@ class Visit < ActiveRecord::Base
   acts_as_paranoid
 
   def validate_start_date_is_not_in_the_past
-    errors.add(:start_date, :in_past) unless start_date >= Time.zone.now.beginning_of_day
+    # We compare to yesterday because user's "today" may be yesterday in UTC.  But
+    # we're OK since datepicker in javascript enforces using the user's time zone.
+    errors.add(:start_date, :in_past) unless start_date >= Date.current - 1.day
   end
 
   def available_hostings(current_user)

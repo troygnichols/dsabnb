@@ -53,14 +53,24 @@ RSpec.describe Visit, type: :model do
       .to raise_error ActiveRecord::RecordInvalid
   end
 
-  it "is invalid with a start date in the past" do
+  it "is invalid with a start date two days ago" do
     expect do
       FactoryGirl.create(
         :visit,
-        start_date: Faker::Date.backward(1),
+        start_date: Date.current - 2.day,
         zipcode: "11211"
       )
     end.to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is valid with a start date of yesterday" do
+    expect do
+      FactoryGirl.create(
+        :visit,
+        start_date: Date.current - 1.day,
+        zipcode: "11211"
+      )
+    end
   end
 
   it "requires an end date after start date" do

@@ -67,4 +67,13 @@ RSpec.describe Hosting, type: :model do
     expect(Hosting.first).to be_nil
     expect(Hosting.with_deleted.first).to eq(hosting)
   end
+
+  it "is invalid earlier than yesterday" do
+    expect { FactoryGirl.create(:hosting, start_date: Date.current - 2.days) }
+      .to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it "is valid starting yesterday" do
+    expect { FactoryGirl.create(:hosting, start_date: Date.current - 1.day) }
+  end
 end
