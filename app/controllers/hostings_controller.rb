@@ -1,4 +1,5 @@
 class HostingsController < ApplicationController
+  before_action :find_hosting, only: [:edit, :update, :destroy]
   before_action :ensure_current_user_is_host, only: [:edit, :update, :destroy]
 
   def new
@@ -48,8 +49,15 @@ class HostingsController < ApplicationController
       .permit(:zipcode, :max_guests, :comment, :accomodation_type, :start_date, :end_date)
   end
 
+  def find_hosting
+    @hosting = Hosting.find_by_id(params[:id])
+    if @hosting.nil?
+      flash[:notice] = "Oops! That hosting has been canceled."
+      redirect_to user_url(current_user)
+    end
+  end
+
   def ensure_current_user_is_host
-    @hosting = Hosting.find(params[:id])
     redirect_to user_url(current_user) unless @hosting.host_id == current_user.id
   end
 end

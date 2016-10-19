@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  before_action :find_visit, only: [:show, :edit, :update, :destroy]
   before_action :ensure_current_user_is_visitor, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -49,8 +50,15 @@ class VisitsController < ApplicationController
       .permit(:zipcode, :num_travelers, :start_date, :end_date)
   end
 
+  def find_visit
+    @visit = Visit.find_by_id(params[:id])
+    if @visit.nil?
+      flash[:notice] = "Oops! That visit has been canceled."
+      redirect_to user_url(current_user)
+    end
+  end
+
   def ensure_current_user_is_visitor
-    @visit = Visit.find(params[:id])
     redirect_to user_url(current_user) unless @visit.user_id == current_user.id
   end
 end
