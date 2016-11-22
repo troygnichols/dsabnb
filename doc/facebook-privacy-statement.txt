@@ -2,7 +2,7 @@ Application Privacy Statement
 
 This privacy statement (“Privacy Statement”) applies to the treatment of personally identifiable information submitted by, or otherwise obtained from, you in connection with the associated application (“Application”). The Application is provided by MarchBNB (and may be provided by MarchBNB on behalf of a MarchBNB licensor or partner (“Application Partner”). By using or otherwise accessing the Application, you acknowledge that you accept the practices and policies outlined in this Privacy Statement.
 
-WHAT PERSONAL INFORMATION DOES MarchBNB COLLECT?
+WHAT PERSONAL INFORMATION DOES MARCHBNB COLLECT?
 
 We collect the following types of information from our users:
 
@@ -12,7 +12,7 @@ We may receive and store any information you submit to the Application (or other
 Personal Information Collected Automatically:
 We receive and store certain types of usage related information whenever you interact with Application. For example, MarchBNB may automatically receive and record information regarding your computer’s IP address, browser information, and Facebook user ID. Such information may be shared in aggregate (non-personally identifiable) form with our partners.
 
-HOW DOES MarchBNB USE THE INFORMATION IT COLLECTS?
+HOW DOES MARCHBNB USE THE INFORMATION IT COLLECTS?
 
 MarchBNB uses the information described in this Privacy Statement (i) internally, to analyze, develop and improve its products and services, and (ii) as set forth below in the “Will MarchBNB Share any of the personal information it Collects” section below.
 
@@ -20,7 +20,7 @@ APPLICATION PARTNER TREATMENT OF PERSONAL INFORMATION.
 
 MarchBNB may provide personal information to the applicable Application Partner. The Application Partner’s use of your personal information is subject to the Application Partner’s separate privacy policy – and not this Privacy Statement. The Application Partner’s privacy policy is linked to from within the Partner’s Facebook application.
 
-WILL MarchBNB SHARE ANY OF THE PERSONAL INFORMATION IT RECEIVES?
+WILL MARCHBNB SHARE ANY OF THE PERSONAL INFORMATION IT RECEIVES?
 
 Personal information about our users is an integral part of our business. We neither rent nor sell your personal information to anyone (with the exception of sharing your information with an applicable Application Partner – see the “Application Partner Treatment” section above). We share your personal information only as described below.
 
