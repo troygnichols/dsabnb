@@ -9,7 +9,7 @@
 
   %section.user-travels
     %header
-      = link_to 'Find A Host', new_user_visit_url(user), class: 'btn btn-primaryblue btn-block btn-lg'
+      = link_to 'Find A Host', new_user_visit_url(user), class: 'btn btn-primaryred btn-block btn-lg'
       %span On the road for Hillary?
     - unless user.visits.empty?
       %ul
@@ -22,7 +22,7 @@
 
   %section.user-hostings
     %header
-      = link_to 'I Can Host', new_user_hosting_url(user), class: 'btn btn-lightblue btn-block btn-lg'
+      = link_to 'I Can Host', new_user_hosting_url(user), class: 'btn btn-lightred btn-block btn-lg'
       %span Have room to share?
     - unless user.hostings.empty?
       %ul

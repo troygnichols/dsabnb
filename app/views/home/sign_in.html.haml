@@ -3,12 +3,15 @@
     %img.img-logo{src: image_url(site_image_name)}
 
   %section.instructions
-    %p.lead.text-center Inauguration Project Housing  
+    %p.lead.text-center Hello! DSABNB is AirBNB for the DSA!
+
+    %p This website helps out of town DSA members coming to DSA events to connect with local DSA members who are willing to provide housing. Currently, we are working to connect members who are coming into Washington, D.C. for the inauguration to folks who live here and can house them for a few days. Please follow the steps below:
+
     %table.bump
       %tr
         %td
           %span.big-number 1
-        %td Fill out a quick user profile using your Facebook or Google logi.
+        %td Fill out a quick user profile using your Facebook or Google login.
       %tr
         %td
           %span.big-number 2
@@ -26,5 +29,5 @@
 
   %section.sign-up.bump
     %p.lead.text-center Sign In Using...
-    = link_to "Facebook", "/auth/facebook", {class: 'bump btn btn-primaryblue btn-block btn-lg'}
-    = link_to "Google", "/auth/google_oauth2", {class: 'btn btn-lightblue btn-block btn-lg'}
+    = link_to "Facebook", "/auth/facebook", {class: 'bump btn btn-primaryred btn-block btn-lg'}
+    = link_to "Google", "/auth/google_oauth2", {class: 'btn btn-lightred btn-block btn-lg'}
