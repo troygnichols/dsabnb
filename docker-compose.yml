@@ -10,8 +10,6 @@ web:
     - '8080:8080'
   links:
     - herokuPostgresql
-  volumes:
-    - '.:/app/user'
 shell:
   build: .
   command: bash
@@ -28,5 +26,3 @@ shell:
     - '.:/app/user'
 herokuPostgresql:
   image: postgres
-  volumes:
-    - pgdata:/var/lib/postgresql/data/

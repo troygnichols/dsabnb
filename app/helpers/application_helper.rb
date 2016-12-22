@@ -1,10 +1,10 @@
 module ApplicationHelper
   def site_name
-    "HillaryBNB"
+    "Inauguration Protest Housing"
   end
 
   def cause_name
-    "Hillary Clinton"
+    "Inauguration Protest Housing"
   end
 
   def site_hostname(request)
@@ -12,11 +12,11 @@ module ApplicationHelper
   end
 
   def site_image_name
-    "Highlight_h_logo_large.png"
+    "DSA_logo.png"
   end
 
   def email_contact
-    "admin@hillarybnb.com"
+    "help@inaugurationprotesthousing.com"
   end
 
   def privacy_policy_link
