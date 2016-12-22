@@ -1,3 +1,4 @@
+### ATTN: wip rewrite of original `contributing.md` doc
 
 * Rails 4.2.5
 * Devise/ Omniauth for authentication with Facebook and google
@@ -6,7 +7,7 @@
 
 ## Setting up development
 * install [Docker Toolbox](https://www.docker.com/toolbox)
-* fork HillaryBNB on github: `git clone git@github.com:<your github username>/HillaryBNB.git && cd HillaryBNB`
+* clone `dsabnb` on github: `git clone git@github.com:dsausa/dsabnb.git && cd dsabnb`
 * `cp config/application.yml.example config/application.yml`
 * `export RAILS_ENV=development`
 * `docker-machine create -d virtualbox default`
@@ -14,10 +15,22 @@
 * `docker-compose build`
 * `docker-compose up -d web`
 * `open "http://$(docker-machine ip default):8080"`
-* `git remote add upstream https://github.com/DevProgress/HillaryBNB` so you can keep in sync with original project by running `git pull upstream master`.
 * Run tests: `RAILS_ENV=test docker-compose run --rm shell bash -c 'bin/rake db:migrate && bin/rake'`
 * Populate test data: `docker-compose run --rm shell bash -c 'bundle exec rake db:reset'`
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
+
+## Contributing Code
+Please use our [JIRA board](#) when contributing
+
+* All work is based off of the `develop` branch
+* Naming conventions for branches
+  * if new feature: `feature/<JIRA-story>/<what-the-feature-is>`
+    * eg: `feature/dsa-001/add-home-page`
+  * if bug fix: `hotfix/<what-is-being-fixed>`
+    * eg: `hotfix/fix-banner-alignment-on-ie9`
+  * if creating release branch: `release/<release-version>`
+    * eg: `release/v1.0`
+  * make pull requests to `develop` branch
 
 ## Updating gem versions
 * `docker-compose run --rm shell bundle update [gemname]`
@@ -32,13 +45,13 @@
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 * `heroku plugins:install heroku-container-tools`
 * get application.yml from DJ and put it in config/
-* `heroku container:release --app hillarybnb`   NOTE that this deploys whatever you have locally in your dev environment, not what is committed to git or pushed to github
+* `heroku container:release --app dsabnb`   NOTE that this deploys whatever you have locally in your dev environment, not what is committed to git or pushed to github
 
 If there are database migrations to be deployed:
 * `heroku run rake db:migrate`
 * `heroku restart`
 
-* `heroku open --app hillarybnb`
+* `heroku open --app dsabnb`
 
 ## Sending daily emails
 You should set up the following to run periodically (daily was what BernieBNB did):
@@ -88,10 +101,10 @@ A mailgun account is required to send the confirmation email when signing up.
 * Restart `docker-compose restart web`
 * If you see a 400 error from Mailgun, check your [logs](https://mailgun.com/app/logs). Mailgun may disable your account pending business verification; you'll need to contact support to have them enable it or borrow someone else's sandbox credentials if they don't respond.
 
-## When does HillaryBNB send emails?
+## When does dsabnb send emails?
 
-As of 20161010, HillaryBNB.com sends emails nightly.  Every night at 3:30/4am Eastern time we do the following:
+As of 20161010, dsabnb.com sends emails nightly.  Every night at 3:30/4am Eastern time we do the following:
 
-For each Hosting Offer registered in the system, if there are any visitors who clicked the "SEND MY CONTACT INFO" button within the past 24 hours, we gather their contact information and email them to the the host. (Note that this means a host may receive multiple emails from us if they have multiple Hosting Offers).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_contacts_digest.rake)
+For each Hosting Offer registered in the system, if there are any visitors who clicked the "SEND MY CONTACT INFO" button within the past 24 hours, we gather their contact information and email them to the the host. (Note that this means a host may receive multiple emails from us if they have multiple Hosting Offers).  (This logic is in https://github.com/dsausa/dsabnb/blob/master/lib/tasks/send_new_contacts_digest.rake)
 
-For each Visit registered in the system, if there are any new Hosting Offers created within the past 24 hours that are within 20 miles of the Visit's zip code, we email them to the visitor. (Note that this means a visitor may receive multiple emails from us if they have multiple pending Visits).  (This logic is in https://github.com/DevProgress/HillaryBNB/blob/master/lib/tasks/send_new_hosts_digest.rake)
+For each Visit registered in the system, if there are any new Hosting Offers created within the past 24 hours that are within 20 miles of the Visit's zip code, we email them to the visitor. (Note that this means a visitor may receive multiple emails from us if they have multiple pending Visits).  (This logic is in https://github.com/dsausa/dsabnb/blob/master/lib/tasks/send_new_hosts_digest.rake)
