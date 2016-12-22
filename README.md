@@ -1,5 +1,5 @@
 ## DSABNB 
-![https://github.com/dsausa/dsabnb/blob/master/app/assets/images/DSA_logo.png](Democratic Socialists of America Logo)
+<img src="/app/assets/images/DSA_logo.png"/>
 
 [DSABNB](https://www.dsabnb.com) allows out of town DSA members coming to DSA
 events to connect with local DSA members who are willing to provide housing. It
