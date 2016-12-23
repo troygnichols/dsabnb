@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--
-HHHHHH       →→HHHH
-HHHHHH       →→→→HH
-HHHHHH       →→→→→→→
-→→→→→→→→→→→→→→→→→→→→→→      Git out the vote!
-→→→→→→→→→→→→→→→→→→→→→→→→
-→→→→→→→→→→→→→→→→→→→→→→      https://boards.greenhouse.io/hillaryforamerica
-HHHHHH       →→→→→→→
-HHHHHH       →→→→HH
-HHHHHH       →→HHHH
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -17,7 +6,7 @@ HHHHHH       →→HHHH
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= csrf_meta_tags %>
 
-  <% description = "Home sharing for " + cause_name +  " supporters. Helping connect volunteers out on the campaign trail with a place to stay. Sign up today as either host or traveler!" %>
+  <% description = "Home sharing for DSA members. Sign up today as either host or traveler!" %>
 
   <meta property="og:title" content="<%= site_hostname(request) %>" />
   <meta property="og:description" content="<%= description %>" />
@@ -69,7 +58,7 @@ HHHHHH       →→HHHH
             </ul>
           </div>
           <div class="col-md-4">
-            <%= link_to "Feedback", "http://goo.gl/forms/PHeNrIVtaRMGdTU22" %>
+            <%= link_to "Feedback", "mailto:info@dsabnb.com" %>
           </div>
           <div class="col-md-4">
             <%= link_to "Privacy", privacy_policy_path %>
