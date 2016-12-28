@@ -20,7 +20,7 @@
 * Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
 
 ## Contributing Code
-Please use our [JIRA board](#) when contributing
+Please sign up to our [Slack channel](https://dsausa.slack.com) and subscribe to the `dsabnb` channel to communictae with the team.
 
 * All work is based off of the `master` branch
 * Naming conventions for branches
