@@ -22,15 +22,16 @@
 ## Contributing Code
 Please use our [JIRA board](#) when contributing
 
-* All work is based off of the `develop` branch
+* All work is based off of the `master` branch
 * Naming conventions for branches
-  * if new feature: `feature/<JIRA-story>/<what-the-feature-is>`
-    * eg: `feature/dsa-001/add-home-page`
+  * if new feature: `feature/<what-the-feature-is>`
+    * eg: `feature/add-home-page`
   * if bug fix: `hotfix/<what-is-being-fixed>`
     * eg: `hotfix/fix-banner-alignment-on-ie9`
-  * if creating release branch: `release/<release-version>`
-    * eg: `release/v1.0`
-  * make pull requests to `develop` branch
+* for submission
+  * make sure branch updated with current state of `master` branch
+    * ex: `git pull origin master`
+  * make pull requests to `master` branch
 
 ## Updating gem versions
 * `docker-compose run --rm shell bundle update [gemname]`
