@@ -25,8 +25,7 @@
 
 /* RWB STYLES */
 
-$primaryblue: #0055b8;
-$lightblue: #53aaff;
+$primaryred: #EC1F27;
 
 html, body {
   font-size: 19px;
@@ -76,7 +75,7 @@ small, .help-block {
 
 span.big-number {
   padding: 5px;
-  background-color: $primaryblue;
+  background-color: $primaryred;
   color: white;
   padding: 10px 16px;
   border-radius: 50%;
@@ -163,18 +162,19 @@ footer {
   margin-top: 50px;
 }
 
-.btn-primaryblue {
+.btn-primaryred {
   color: #fff;
-  background-color: $primaryblue;
-  border-color: darken($primaryblue, 10%);
+  background-color: $primaryred;
+  border-color: darken($primaryred, 10%);
 }
 
-.btn-lightblue {
+.btn-lightred {
   color: #fff;
-  background-color: $lightblue;
-  border-color: darken($lightblue, 10%);
+  background-color: $primaryred;
+  border-color: darken($primaryred, 10%);
 }
 
 .img-logo {
+  max-width: 100%;
   width: 500px;
 }

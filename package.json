@@ -1,6 +1,6 @@
 {
-  "name": "HillaryBNB",
-  "homepage": "http://www.hillarybnb.com",
+  "name": "DSABNB",
+  "homepage": "http://www.dsabnb.com",
   "license": "MIT",
   "version": "0.0.0",
   "main": "application.js",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DevProgress/HillaryBNB.git"
+    "url": "https://github.com/dsausa/dsabnb.git"
   },
   "bugs": {
-    "url": "https://github.com/DevProgress/HillaryBNB/issues"
+    "url": "https://github.com/dsausa/dsabnb/issues"
   },
   "dependencies": {
     "bower": "^1.7.7"

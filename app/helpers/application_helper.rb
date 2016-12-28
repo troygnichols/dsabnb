@@ -1,10 +1,10 @@
 module ApplicationHelper
   def site_name
-    "Inauguration Protest Housing"
+    "DSABNB"
   end
 
   def cause_name
-    "Inauguration Protest Housing"
+    "DSABNB"
   end
 
   def site_hostname(request)
@@ -16,18 +16,18 @@ module ApplicationHelper
   end
 
   def email_contact
-    "help@inaugurationprotesthousing.com"
+    "info@dsabnb.com"
   end
 
   def privacy_policy_link
-    "https://github.com/DevProgress/HillaryBNB/blob/master/doc/facebook-privacy-statement.txt"
+    "https://github.com/dsausa/dsabnb/blob/master/doc/facebook-privacy-statement.txt"
   end
 
   def bug_report_link
-    "https://github.com/DevProgress/HillaryBNB/issues"
+    "https://github.com/dsausa/dsabnb/issues"
   end
 
   def github_link
-    "https://github.com/DevProgress/HillaryBNB"
+    "https://github.com/dsausa/dsabnb"
   end
 end
