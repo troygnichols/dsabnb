@@ -1,4 +1,4 @@
-HillaryBNB: A home-sharing app for Clinton supporters, adapted from BernieBNB by Coders For Sanders
+DSABNB: A home-sharing app for Clinton supporters, adapted from BernieBNB by Coders For Sanders
     Copyright (C) 2016  Coders For Sanders and DevProgress
 
     This program is free software: you can redistribute it and/or modify

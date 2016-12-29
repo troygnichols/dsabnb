@@ -59,12 +59,12 @@ test:
 #
 staging:
   <<: *default
-  database: HillaryBNB_staging
-  username: HillaryBNB
-  password: <%= ENV['BERNIEBNB_DATABASE_PASSWORD'] %>
+  database: DSABNB_staging
+  username: DSABNB
+  password: <%= ENV['DSABNB_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
-  database: HillaryBNB_production
-  username: HillaryBNB
-  password: <%= ENV['BERNIEBNB_DATABASE_PASSWORD'] %>
+  database: DSABNB_production
+  username: DSABNB
+  password: <%= ENV['DSABNB_DATABASE_PASSWORD'] %>
