@@ -6,6 +6,10 @@ events to connect with local DSA members who are willing to provide housing. It
 is a work in progress built on top of [HillaryBNB](https://github.com/DevProgress/HillaryBNB), which was begat by [BernieBNB](https://github.com/SandersForPresident/BernieBNB ).
 
 ## Contributing
+
+[![CircleCI](https://circleci.com/gh/dsausa/dsabnb.svg?style=svg)](https://circleci.com/gh/dsausa/dsabnb)
+
+
 We would love your help! Please join the DSA slack and say hello in the #tech
 channel. See
 the
