@@ -22,7 +22,5 @@ shell:
     - '8080:8080'
   links:
     - herokuPostgresql
-  volumes:
-    - '.:/app/user'
 herokuPostgresql:
   image: postgres
