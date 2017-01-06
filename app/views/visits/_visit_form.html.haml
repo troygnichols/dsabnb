@@ -3,7 +3,7 @@
 = form_for @visit, url: { action: action } do |f|
   .form-fields
     .form-group
-      = f.label :zipcode, "Where are you going?"
+      = f.label :zipcode, "Where are you going? For Washington D.C., we recommend using 20009."
       = f.text_field :zipcode, class: "form-control"
       %small Zip Code near your destination.
 
