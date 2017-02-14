@@ -20,7 +20,7 @@ RSpec.describe UserMailer, type: :mailer do
 
         body['from'] == ENV['DEFAULT_SENDER_ADDRESS'] &&
           body['to'] == @user.email &&
-          body['subject'] == "Inauguration Protest Housing - Thanks for signing up!" &&
+          body['subject'] == "DSABNB - Thanks for signing up!" &&
           body['html'].match(/Hi #{@user.first_name},/) &&
           body['html'].match(/You can add, edit or delete your travel/) &&
           body['html'].match(user_url(@user))
