@@ -17,7 +17,7 @@ RSpec.describe UserMailer, type: :mailer do
 
         body['from'] == ENV['DEFAULT_SENDER_ADDRESS'] &&
           body['to'] == @user.email &&
-          body['subject'] == "Inauguration Protest Housing - Confirm Your Email" &&
+          body['subject'] == I18n.t("user_mailer.registration_confirmation.subject") &&
           body['html'].match(/Hey #{@user.first_name},/) &&
           body['html'].match(/#{@user.confirm_token}/)
       end

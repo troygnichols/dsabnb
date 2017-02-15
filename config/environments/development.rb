@@ -54,4 +54,7 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_view.raise_on_missing_translations = true
+
+  # Rails mailer previews
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
 end

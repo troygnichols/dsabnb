@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: user.email,
-      subject: "DSABNB - Confirm Your Email",
+      subject: default_i18n_subject,
       html: template("user_mailer/registration_confirmation.html.erb")
     )
   end
@@ -19,7 +19,7 @@ class UserMailer < ApplicationMailer
     deliver_message(
       from: default_sender_address,
       to: @user.email,
-      subject: "DSABNB - Thanks for signing up!",
+      subject: default_i18n_subject,
       html: template("user_mailer/welcome_email.html.erb")
     )
   end
@@ -80,7 +80,11 @@ class UserMailer < ApplicationMailer
   private
 
   def deliver_message(message_params)
-    client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+    if Rails.env.development?
+      mail(message_params)
+    else
+      client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+    end
   end
 
   def client
