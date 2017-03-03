@@ -46,6 +46,7 @@ group :development do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'mailcatcher'
 end
 
 group :development, :test do

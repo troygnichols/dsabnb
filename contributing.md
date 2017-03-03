@@ -4,11 +4,13 @@
 * Devise/ Omniauth for authentication with Facebook and google
 * Geocoder gem to search by zipcode, using Bing geocoding API.
 * Bower for front end asset management
+* [Mailcatcher](https://mailcatcher.me) for email in development
 
 ## Setting up development
 * install ruby, a ruby verion manager, and the `bundler` gem
 * clone `dsabnb` on github: `git clone git@github.com:dsausa/dsabnb.git && cd dsabnb`
 * `bundle install`
+* `mailcatcher` to start mailcatcher in background as a daemon
 * `cp config/application.yml.example config/application.yml`
 * `bundle exec rake db:create`
 * `bundle exec rails server`
@@ -62,7 +64,7 @@ Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname th
 * Alter your `/etc/hosts` and set up a fake hostname hostname for localhost (ex. local.dsabnb.com)
 * Visit `local.dsabnb.com:3000` (default port for rails) to verify it works
 
-## Setting up Facebook/Google/Bing connections
+## Setting up Facebook/Google/Bing/Twitter connections
 Configure values for the variables below in config/application.yml:
 * Set up Facebook Developer account at https://developers.facebook.com
   then get your FACEBOOK_KEY and FACEBOOK_SECRET.
@@ -81,6 +83,9 @@ Configure values for the variables below in config/application.yml:
     * Direct your localhost to local.dsabnb.com in /etc/hosts (or windows equivalent) to ensure your browser can resolve the callback URI:  `echo 'http://localhost:3000 local.dsabnb.com' >> /etc/hosts`
 * Create Bing Maps key (BING_GEOCODE_ID) at
   https://msdn.microsoft.com/en-us/library/ff428642.aspx
+* Create a Twitter app to authenticate against
+  * See omniauth-twitter [docs](https://github.com/arunagw/omniauth-twitter#before-you-begin) for instructions
+  * Set `TWITTER_API_KEY` and `TWITTER_API_SECRET`
 
 ## Setting up Mailgun
 
