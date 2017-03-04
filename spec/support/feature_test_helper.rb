@@ -32,12 +32,12 @@ module FeatureTestHelper
   def create_visit(
       start_date=Date.current,
       end_date=Date.current + 1.day,
-      zipcode='11211',
+      location='11211',
       num_travelers=10
     )
 
     click_link "Find A Host"
-    fill_in "Where are you going?", with: zipcode
+    fill_in "Where are you going?", with: location
     find('#visit_start_date', :visible => false).set(start_date)
     find('#visit_end_date',   :visible => false).set(end_date)
     find('#visit_num_travelers').select(num_travelers)

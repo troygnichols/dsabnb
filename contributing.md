@@ -2,7 +2,7 @@
 
 * Rails 4.2.5
 * Devise/ Omniauth for authentication with Facebook and google
-* Geocoder gem to search by zipcode, using Bing geocoding API.
+* Geocoder gem to search by location, using Bing geocoding API.
 * Bower for front end asset management
 * [Mailcatcher](https://mailcatcher.me) for email in development
 

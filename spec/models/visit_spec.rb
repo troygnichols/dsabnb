@@ -30,26 +30,11 @@ RSpec.describe Visit, type: :model do
   end
 
   it "has a valid factory - valid zip code - 5 digits" do
-    expect(FactoryGirl.create(:visit, zipcode: "11211")).to be_valid
+    expect(FactoryGirl.create(:visit, location: "11211")).to be_valid
   end
 
   it "is invalid without a zip code - 0 digits" do
-    expect { FactoryGirl.create(:visit, zipcode: nil) }
-      .to raise_error ActiveRecord::RecordInvalid
-  end
-
-  it "is invalid with bad zip code - < 5 digits" do
-    expect { FactoryGirl.create(:visit, zipcode: "9131") }
-      .to raise_error ActiveRecord::RecordInvalid
-  end
-
-  it "is invalid with bad zip code - > 5 digits" do
-    expect { FactoryGirl.create(:visit, zipcode: "654321") }
-      .to raise_error ActiveRecord::RecordInvalid
-  end
-
-  it "is invalid with bad zip code - non-digits" do
-    expect { FactoryGirl.create(:visit, zipcode: "ABC") }
+    expect { FactoryGirl.create(:visit, location: nil) }
       .to raise_error ActiveRecord::RecordInvalid
   end
 
@@ -58,7 +43,7 @@ RSpec.describe Visit, type: :model do
       FactoryGirl.create(
         :visit,
         start_date: Date.current - 2.day,
-        zipcode: "11211"
+        location: "11211"
       )
     end.to raise_error ActiveRecord::RecordInvalid
   end
@@ -68,7 +53,7 @@ RSpec.describe Visit, type: :model do
       FactoryGirl.create(
         :visit,
         start_date: Date.current - 1.day,
-        zipcode: "11211"
+        location: "11211"
       )
     end
   end
@@ -76,7 +61,7 @@ RSpec.describe Visit, type: :model do
   it "requires an end date after start date" do
     expect do
       FactoryGirl.create(:visit,
-                         zipcode: "11211",
+                         location: "11211",
                          start_date: Time.zone.today + 5.days,
                          end_date: Time.zone.today)
     end.to raise_error ActiveRecord::RecordInvalid
@@ -84,7 +69,7 @@ RSpec.describe Visit, type: :model do
 
   it "valid if end date equals start date" do
     expect(FactoryGirl.create(:visit,
-                              zipcode: "11211",
+                              location: "11211",
                               start_date: Time.zone.now.to_date,
                               end_date: Time.zone.now.to_date)
     ).to be_valid
@@ -94,7 +79,7 @@ RSpec.describe Visit, type: :model do
     new_time = Time.zone.now + 12.hours
     Timecop.travel(new_time)
     expect(FactoryGirl.create(:visit,
-                              zipcode: "11211",
+                              location: "11211",
                               start_date: Time.zone.today,
                               end_date: Time.zone.today)
     ).to be_valid

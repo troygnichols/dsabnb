@@ -1,24 +1,33 @@
 class Visit < ActiveRecord::Base
+  attr_accessor :skip_geocode
+
   validates_date :start_date, on: :create, presence: true
   validate :validate_start_date_is_not_in_the_past, if: :start_date
+  validates :location, presence: true
 
   validates_date :end_date, on: :create, on_or_after: :start_date
-  validates :zipcode, zipcode: { country_code: :es }
 
   belongs_to :user
   has_many :contacts
 
-  after_validation :geocode
+  after_validation :geocode, unless: ->(visit) {
+    visit.skip_geocode
+  }
 
-  geocoded_by :zipcode do |visit, results|
+  geocoded_by :location do |visit, results|
     if geo = results.first
       visit.city = geo.city
       visit.state = geo.state
       visit.latitude = geo.latitude
       visit.longitude = geo.longitude
+      visit.postal_code = geo.postal_code
     else
-      visit.errors.add(:base, "Unknown Zip Code") unless visit.zipcode.nil?
+      visit.errors.add(:base, "Unknown location") unless visit.location.blank?
     end
+  end
+
+  def has_geo_data?
+    geocoded? && attributes.values_at("city", "state", "postal_code").all?(&:present?)
   end
 
   acts_as_paranoid

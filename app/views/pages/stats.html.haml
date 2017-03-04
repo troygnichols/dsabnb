@@ -12,6 +12,6 @@
 
     %li
       %p Visits: #{Visit.count}
-      %p Combos: #{Visit.group(:state, :city, :zipcode).count}
+      %p Combos: #{Visit.group(:state, :city, :location).count}
 - else
   Unauthorized.  Must be an admin.

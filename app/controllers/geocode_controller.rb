@@ -1,0 +1,3 @@
+class GeocodeController < ApplicationController
+
+end

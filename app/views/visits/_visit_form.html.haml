@@ -1,11 +1,28 @@
 - action = @visit.persisted? ? "update" : "create"
 
+= content_for :extra_scripts do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDHLp647qkwqajJcwFrqh61S0dsY0sD7g0"
+
 = form_for @visit, url: { action: action } do |f|
+  #visit-map
+
   .form-fields
     .form-group
-      = f.label :zipcode, "Where are you going? For Washington D.C., we recommend using 20009."
-      = f.text_field :zipcode, class: "form-control"
-      %small Zip Code near your destination.
+      = f.label :location, "Where are you going?"
+      = f.text_field :location, class: "form-control", autofocus: true
+      %small Type an address, city or ZIP, or click on the map
+
+    .form-group
+      = f.label :distance, "Find hosts within"
+      = f.number_field :distance, class: "form-control"
+      %small miles
+      %div.pull-right
+        %button#visit-map-search.btn.btn-success
+          %span.fa.fa-search
+          Find on map
+
+    %br
+    %hr
 
     .form-group
       %label What nights are you staying?

@@ -20,6 +20,7 @@
   <title><%= site_name %></title>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= yield :extra_scripts %>
   <%= javascript_include_tag 'application' %>
   <meta name="google-site-verification" content="Rf4-_xxiyhJpGWzPBcEhqvFbJi22lrm_w2Khg8XekZI" />
 
@@ -31,9 +32,7 @@
   <main class="center-block page">
     <% if alert %>
       <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <% if flash[:notice] %>
+    <% end %> <% if flash[:notice] %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
 
