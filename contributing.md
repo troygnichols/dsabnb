@@ -6,21 +6,17 @@
 * Bower for front end asset management
 
 ## Setting up development
-* install [Docker Toolbox](https://www.docker.com/toolbox)
+* install ruby, a ruby verion manager, and the `bundler` gem
 * clone `dsabnb` on github: `git clone git@github.com:dsausa/dsabnb.git && cd dsabnb`
+* `bundle install`
 * `cp config/application.yml.example config/application.yml`
-* `export RAILS_ENV=development`
-* `docker-machine create -d virtualbox default`
-* `eval $(docker-machine env default)`
-* `docker-compose build`
-* `docker-compose up -d web`
-* `open "http://$(docker-machine ip default):8080"`
-* Run tests: `RAILS_ENV=test docker-compose run --rm shell bash -c 'bin/rake db:migrate && bin/rake'`
-* Populate test data: `docker-compose run --rm shell bash -c 'bundle exec rake db:reset'`
-* Rebuild and restart (not always required; DJ unclear on which kind of changes require it): `export RAILS_ENV=development; docker-compose down && docker-compose build && docker-compose up -d web`
+* `bundle exec rake db:create`
+* `bundle exec rails server`
+* Run tests: `RAILS_ENV=test bundle exec rake db:migrate && rake`
+* Populate test data: `bundle exec rake db:reset`
 
 ## Contributing Code
-Please sign up to our [Slack channel](https://dsausa.slack.com) and subscribe to the `dsabnb` channel to communictae with the team.
+Please sign up to our [Rocket Chat](https://dsausa.chat) and subscribe to the `dsabnb` channel to communicate with the team.
 
 * All work is based off of the `master` branch
 * Naming conventions for branches
@@ -34,25 +30,24 @@ Please sign up to our [Slack channel](https://dsausa.slack.com) and subscribe to
   * make pull requests to `master` branch
 
 ## Updating gem versions
-* `docker-compose run --rm shell bundle update [gemname]`
+* `bundle update [gemname]`
 
 ## Modifying schema
-* EXAMPLE: `docker-compose run --rm shell rails generate migration AddAccomodationTypeToHosting accomodation_type:integer`
+* EXAMPLE: `rails generate migration AddAccomodationTypeToHosting accomodation_type:integer`
 
 ## Connecting to dev DB
-* `docker-compose exec herokuPostgresql psql -U postgres`
+* `be rails db`
 
 ## Deploying to Heroku
 * install [Heroku Toolbelt](https://toolbelt.heroku.com/)
 * `heroku plugins:install heroku-container-tools`
-* get application.yml from DJ and put it in config/
-* `heroku container:release --app dsabnb`   NOTE that this deploys whatever you have locally in your dev environment, not what is committed to git or pushed to github
+* add a `heroku` remote either through: `heroku create` or adding existing app `git remote add heroku https://git.heroku.com/<app_name>`
+* `git push heroku master`
 
 If there are database migrations to be deployed:
 * `heroku run rake db:migrate`
 * `heroku restart`
-
-* `heroku open --app dsabnb`
+* `heroku open`
 
 ## Sending daily emails
 You should set up the following to run periodically (daily was what BernieBNB did):
@@ -61,13 +56,11 @@ You should set up the following to run periodically (daily was what BernieBNB di
 * `heroku run rake send_new_hosts_digest`
 *WARNING* do not run `heroku run rake`, it will happily delete the entire database!   <---- TODO fix this so it cant happen in production
 
-
 ## Setup local hostname
-Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname that points to your docker machine
+Google OAuth only allows hostnames for its OAuth URLs. Setup a local hostname that points to localhost (127.0.0.1)
 ### Mac
-* Run `docker-machine ip default` to find your docker machine IP
-* Copy that into `/etc/hosts` and give it whatever hostname you want (ex. hbnb.com)
-* Visit `hbnb.com:8080` to verify it works
+* Alter your `/etc/hosts` and set up a fake hostname hostname for localhost (ex. local.dsabnb.com)
+* Visit `local.dsabnb.com:3000` (default port for rails) to verify it works
 
 ## Setting up Facebook/Google/Bing connections
 Configure values for the variables below in config/application.yml:
@@ -84,8 +77,8 @@ Configure values for the variables below in config/application.yml:
     * In the Google console:
       * Create credentials, which gets you a Client ID and Secret
       * Enable the Google+ API or you will get an invalid credentials error
-      * Set your redirect URI to the following http://hbnb.com:8080/auth/google_oauth2/callback
-    * Rename your VM to hbnb.com in /etc/hosts (or windows equivalent) to ensure your browser can resolve the callback URI:  `echo '$(docker-machine ip) hbnb.com' >> /etc/hosts`
+      * Set your redirect URI to the following http://local.dsabnb.com:3000/auth/google_oauth2/callback
+    * Direct your localhost to local.dsabnb.com in /etc/hosts (or windows equivalent) to ensure your browser can resolve the callback URI:  `echo 'http://localhost:3000 local.dsabnb.com' >> /etc/hosts`
 * Create Bing Maps key (BING_GEOCODE_ID) at
   https://msdn.microsoft.com/en-us/library/ff428642.aspx
 
@@ -97,9 +90,9 @@ A mailgun account is required to send the confirmation email when signing up.
 * You will start with a sandbox account with up to 300 emails per day, or you can create a real one with 10k free emails per month.
     * If using the sandbox account, add your own email as an [authorized recipient](https://mailgun.com/app/testing/recipients).
 * Go to your sandbox domain page to fill out all the `MAILGUN_*` variables in `config/application.yml`
-    * In `config/application.yml`, set MAILER_URL to the result of `echo $(docker-machine ip default):8080`
+    * In `config/application.yml`, set MAILER_URL to localhost:3000`
     * Go to the [main page](https://mailgun.com/app/dashboard) and search for `API Keys` to find your public key.
-* Restart `docker-compose restart web`
+* Restart
 * If you see a 400 error from Mailgun, check your [logs](https://mailgun.com/app/logs). Mailgun may disable your account pending business verification; you'll need to contact support to have them enable it or borrow someone else's sandbox credentials if they don't respond.
 
 ## When does dsabnb send emails?
