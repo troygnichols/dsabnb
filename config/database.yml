@@ -22,14 +22,9 @@ default: &default
   # password: <%= ENV['PASSWORD'] %>
   # host:     <%= ENV['IP'] %>
 
-development: &default
-  adapter: postgresql
-  encoding: unicode
-  database: postgres
-  pool: 5
-  username: postgres
-  password:
-  host: db
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] || "postgres://@localhost/DSABNB_development" %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
