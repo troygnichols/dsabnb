@@ -22,6 +22,7 @@ gem 'parser'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 
 gem 'geocoder'
 gem 'validates_zipcode'
@@ -46,6 +47,7 @@ group :development do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'mailcatcher'
 end
 
 group :development, :test do
