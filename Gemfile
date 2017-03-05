@@ -44,15 +44,15 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'mailcatcher'
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # Or call binding.pry anywhere in the code to get a
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'

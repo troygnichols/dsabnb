@@ -54,7 +54,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bower-rails (0.10.0)
     builder (3.2.2)
-    byebug (9.0.5)
+    byebug (9.0.6)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -240,6 +240,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.4.0)
@@ -410,7 +413,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bower-rails
-  byebug
   capybara
   coffee-rails
   database_cleaner
@@ -440,6 +442,7 @@ DEPENDENCIES
   orderly
   parser
   pg
+  pry-byebug
   pry-rails
   puma-rails
   quiet_assets
